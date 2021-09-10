@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    
+    <script src="https://kit.fontawesome.com/479e83529b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/css.css">
+    
+    
+    <script src="assets/js/abrirVentanas.js"></script>
+</head>
+<body>
+    <button class="btnx" id="ayuda" data-toggle="tooltip" data-placement="bottom" title="Recuerda que la contraseña es tu número de documento"><a class="text">Ayuda <i class= "fas fa-question-circle"></i></a></button>
+   
+<div class="form-Bg">    
+    <div class="form-header">
+        <h1>OLIMPICS GEEK</h1>
+        <h2>Iniciar Sesión</h2>
+        <p>¡Bienvenid@! Inicia sesión y comienza a jugar</p>
+    </div>
+    
+    <form class="FormLogin">
+        <div class="form-group">
+            <input type="text" placeholder="Usuario" required="required" id="usuario"/>
+        </div>
+
+        <div class="form-group">
+            <input type="password" placeholder="Contraseña" required="required" id="password"/>
+        </div>
+        
+
+        <div class="form-group" style="text-align-last: center;">         
+            <span><a style="color:#FFFFFF;">¿No tienes una cuenta?</a><a> </a><a class="modalBtn" href="javascript:modalActive()">Regístrate</a></span>
+        </div>
+
+        <div class="form-group">
+            <button type="button" onclick="inicioSesion()">Iniciar Sesión</button>
+        </div>
+    </form> 
+</div>
+    
+    
+
+
+ <!-- Modal -->
+ <div class="modal-bg">
+    <div class="modal">
+        <span class="modal-close" onclick="modalClose()">&times;</span>    
+        <!-- <input type="button"  value="X">  -->
+         <div class="form-Bg">
+            <div class="form-header">         
+                <h1>Olimpics Geek</h1>
+                <h2>Regístrate Ahora</h2>
+                <p>Fácil, sencillo y rápido</p>
+            </div>
+            <form>
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Nombre" required="required"/> 
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Correo Eléctronico" required="required"/> 
+                </div>
+                <div class="form-group">
+                    <input type="text" id="identificacion" placeholder="No. Identificación" required="required"/> 
+                </div>
+                <div class="form-group">
+                    <input type="text" id="telefono" placeholder="Teléfono" required="required"/> 
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="registroUsuario()">REGÍSTRATE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/login.js"></script>
+<script src="assets/js/usuario.js"></script>
+
+
+</body>
+</html>
