@@ -15,14 +15,17 @@ function modalCerrar() {
 // }
 
 function abrirJuego() {
-    document.getElementById("video1").style.display = "block";
+    var video=document.getElementById("video1");
+    video.style.display = "block";
+    console.log(video);
     setTimeout(() => {
+      video.setAttribute("muted",true);
         document.getElementById("video1").style.visibility = "hidden";
         iniciaGame();
         var nombre = getCookie("nombre");
-        document.querySelector(".nombre").innerHTML = nombre;    
+        document.querySelector(".nombre").innerHTML = nombre; 
 
-    }, 4000);
+    }, 42000);
 }
 
 function podio() {

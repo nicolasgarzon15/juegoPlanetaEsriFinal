@@ -324,13 +324,15 @@ function piedras() {
       let canvas = document.querySelector(".container")
       canvas.classList.add("invisible")
 
+      game.stop();
+
       let video = document.querySelector(".video2")
       video.classList.remove("invisible")
       setTimeout(() => {
 
         location.href = 'PLANETA_ESRI_2021/podio.html';
         cargarPuntuacion();
-      }, 4000);
+      }, 32000);
       // alert("nivel terminado")
       //podio();
 
