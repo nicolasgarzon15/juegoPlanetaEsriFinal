@@ -48,6 +48,7 @@ let nivel = 0;
 let puntos = 0;
 let puntoAdicional = 0;
 
+let SoundFondo;
 let SoundExplosion;
 let jugadorAgachadoIMG;
 let jugadorSaltoIMG;
@@ -62,94 +63,98 @@ let jugador2;
 let jugador3;
 
 
-loader.add("pista", "assets/img/Escenario_1/fondosol.png")
-loader.add("nubes", "assets/img/Escenario_1/nubes.png")
-  .add("medio", "assets/img/Escenario_1/medio.png")
-  .add("frente", "assets/img/Escenario_1/Frente.png")
+loader.add("pista", "assets/img/Escenario_3/fondosol.png")
+loader.add("nubes", "assets/img/Escenario_3/nube.png")
+  .add("medio", "assets/img/Escenario_3/medio.png")
+  .add("frente", "assets/img/Escenario_3/Frente.png")
   .add("heroe", "assets/img/heroe.png")
+  .add("SoundFondo", "assets/sound/fondo.mp3")
   .add("SoundExplosion", "assets/sound/choque.mp3")
   .add("texturapiedra", "assets/img/imagenes/props/obstaculonivel1.png")
   .add("texturaappstudio", "assets/img/imagenes/props/appstudio.png")
   .add("texturemoneda", "assets/img/imagenes/nivel1/moneda.png")
   .add("texturepajaro", "assets/img/imagenes/nivel1/pajaro.png")
-loader.add("caminando0", "assets/img/imagenes/nivel1/caminado/caminado_0.png")
-loader.add("caminando1", "assets/img/imagenes/nivel1/caminado/caminado_1.png")
-loader.add("caminando2", "assets/img/imagenes/nivel1/caminado/caminado_2.png")
-loader.add("caminando3", "assets/img/imagenes/nivel1/caminado/caminado_3.png")
-loader.add("caminando4", "assets/img/imagenes/nivel1/caminado/caminado_4.png")
-loader.add("caminando5", "assets/img/imagenes/nivel1/caminado/caminado_5.png")
-loader.add("caminando6", "assets/img/imagenes/nivel1/caminado/caminado_6.png")
-loader.add("caminando7", "assets/img/imagenes/nivel1/caminado/caminado_7.png")
-loader.add("caminando8", "assets/img/imagenes/nivel1/caminado/caminado_8.png")
-loader.add("caminando9", "assets/img/imagenes/nivel1/caminado/caminado_9.png")
-loader.add("caminando10", "assets/img/imagenes/nivel1/caminado/caminado_10.png")
-loader.add("caminando11", "assets/img/imagenes/nivel1/caminado/caminado_11.png")
-loader.add("caminando12", "assets/img/imagenes/nivel1/caminado/caminado_12.png")
-loader.add("caminando13", "assets/img/imagenes/nivel1/caminado/caminado_13.png")
-loader.add("caminando14", "assets/img/imagenes/nivel1/caminado/caminado_14.png")
-loader.add("caminando15", "assets/img/imagenes/nivel1/caminado/caminado_15.png")
-loader.add("caminando16", "assets/img/imagenes/nivel1/caminado/caminado_16.png")
-loader.add("caminando17", "assets/img/imagenes/nivel1/caminado/caminado_17.png")
-loader.add("caminando18", "assets/img/imagenes/nivel1/caminado/caminado_18.png")
-loader.add("caminando19", "assets/img/imagenes/nivel1/caminado/caminado_19.png")
-loader.add("caminando20", "assets/img/imagenes/nivel1/caminado/caminado_20.png")
-loader.add("caminando21", "assets/img/imagenes/nivel1/caminado/caminado_21.png")
-loader.add("caminando22", "assets/img/imagenes/nivel1/caminado/caminado_22.png")
+loader.add("caminando0", "assets/img/imagenes/nivel3/caminado/Caminado_0.png")
+loader.add("caminando1", "assets/img/imagenes/nivel3/caminado/Caminado_1.png")
+loader.add("caminando2", "assets/img/imagenes/nivel3/caminado/Caminado_2.png")
+loader.add("caminando3", "assets/img/imagenes/nivel3/caminado/Caminado_3.png")
+loader.add("caminando4", "assets/img/imagenes/nivel3/caminado/Caminado_4.png")
+loader.add("caminando5", "assets/img/imagenes/nivel3/caminado/Caminado_5.png")
+loader.add("caminando6", "assets/img/imagenes/nivel3/caminado/Caminado_6.png")
+loader.add("caminando7", "assets/img/imagenes/nivel3/caminado/Caminado_7.png")
+loader.add("caminando8", "assets/img/imagenes/nivel3/caminado/Caminado_8.png")
+loader.add("caminando9", "assets/img/imagenes/nivel3/caminado/Caminado_9.png")
+loader.add("caminando10", "assets/img/imagenes/nivel3/caminado/Caminado_10.png")
+loader.add("caminando11", "assets/img/imagenes/nivel3/caminado/Caminado_11.png")
+loader.add("caminando12", "assets/img/imagenes/nivel3/caminado/Caminado_12.png")
+loader.add("caminando13", "assets/img/imagenes/nivel3/caminado/Caminado_13.png")
+loader.add("caminando14", "assets/img/imagenes/nivel3/caminado/Caminado_14.png")
+loader.add("caminando15", "assets/img/imagenes/nivel3/caminado/Caminado_15.png")
+loader.add("caminando16", "assets/img/imagenes/nivel3/caminado/Caminado_16.png")
+loader.add("caminando17", "assets/img/imagenes/nivel3/caminado/Caminado_17.png")
+loader.add("caminando18", "assets/img/imagenes/nivel3/caminado/Caminado_18.png")
+loader.add("caminando19", "assets/img/imagenes/nivel3/caminado/Caminado_19.png")
+loader.add("caminando20", "assets/img/imagenes/nivel3/caminado/Caminado_20.png")
+loader.add("caminando21", "assets/img/imagenes/nivel3/caminado/Caminado_21.png")
+loader.add("caminando22", "assets/img/imagenes/nivel3/caminado/Caminado_22.png")
+loader.add("caminando23", "assets/img/imagenes/nivel3/caminado/Caminado_23.png")
+loader.add("caminando24", "assets/img/imagenes/nivel3/caminado/Caminado_24.png")
+loader.add("caminando25", "assets/img/imagenes/nivel3/caminado/Caminado_25.png")
 
 
-loader.add("salto0", "assets/img/imagenes/nivel1/salto/salto_0.png")
-loader.add("salto1", "assets/img/imagenes/nivel1/salto/salto_1.png")
-loader.add("salto2", "assets/img/imagenes/nivel1/salto/salto_2.png")
-loader.add("salto3", "assets/img/imagenes/nivel1/salto/salto_3.png")
-loader.add("salto4", "assets/img/imagenes/nivel1/salto/salto_4.png")
-loader.add("salto5", "assets/img/imagenes/nivel1/salto/salto_5.png")
-loader.add("salto6", "assets/img/imagenes/nivel1/salto/salto_6.png")
-loader.add("salto7", "assets/img/imagenes/nivel1/salto/salto_7.png")
-loader.add("salto8", "assets/img/imagenes/nivel1/salto/salto_8.png")
-loader.add("salto9", "assets/img/imagenes/nivel1/salto/salto_9.png")
-loader.add("salto10", "assets/img/imagenes/nivel1/salto/salto_10.png")
-loader.add("salto11", "assets/img/imagenes/nivel1/salto/salto_11.png")
-loader.add("salto12", "assets/img/imagenes/nivel1/salto/salto_12.png")
-loader.add("salto13", "assets/img/imagenes/nivel1/salto/salto_13.png")
-loader.add("salto14", "assets/img/imagenes/nivel1/salto/salto_14.png")
-loader.add("salto15", "assets/img/imagenes/nivel1/salto/salto_15.png")
-loader.add("salto16", "assets/img/imagenes/nivel1/salto/salto_16.png")
-loader.add("salto17", "assets/img/imagenes/nivel1/salto/salto_17.png")
-loader.add("salto18", "assets/img/imagenes/nivel1/salto/salto_18.png")
-loader.add("salto19", "assets/img/imagenes/nivel1/salto/salto_19.png")
-loader.add("salto20", "assets/img/imagenes/nivel1/salto/salto_20.png")
-loader.add("salto21", "assets/img/imagenes/nivel1/salto/salto_21.png")
-loader.add("salto22", "assets/img/imagenes/nivel1/salto/salto_22.png")
-loader.add("salto23", "assets/img/imagenes/nivel1/salto/salto_23.png")
-loader.add("salto24", "assets/img/imagenes/nivel1/salto/salto_24.png")
-loader.add("salto25", "assets/img/imagenes/nivel1/salto/salto_25.png");
+loader.add("salto0", "assets/img/imagenes/nivel3/salto/Salto_0.png")
+loader.add("salto1", "assets/img/imagenes/nivel3/salto/Salto_1.png")
+loader.add("salto2", "assets/img/imagenes/nivel3/salto/Salto_2.png")
+loader.add("salto3", "assets/img/imagenes/nivel3/salto/Salto_3.png")
+loader.add("salto4", "assets/img/imagenes/nivel3/salto/Salto_4.png")
+loader.add("salto5", "assets/img/imagenes/nivel3/salto/Salto_5.png")
+loader.add("salto6", "assets/img/imagenes/nivel3/salto/Salto_6.png")
+loader.add("salto7", "assets/img/imagenes/nivel3/salto/Salto_7.png")
+loader.add("salto8", "assets/img/imagenes/nivel3/salto/Salto_8.png")
+loader.add("salto9", "assets/img/imagenes/nivel3/salto/Salto_9.png")
+loader.add("salto10", "assets/img/imagenes/nivel3/salto/Salto_10.png")
+loader.add("salto11", "assets/img/imagenes/nivel3/salto/Salto_11.png")
+loader.add("salto12", "assets/img/imagenes/nivel3/salto/Salto_12.png")
+loader.add("salto13", "assets/img/imagenes/nivel3/salto/Salto_13.png")
+loader.add("salto14", "assets/img/imagenes/nivel3/salto/Salto_14.png")
+loader.add("salto15", "assets/img/imagenes/nivel3/salto/Salto_15.png")
+loader.add("salto16", "assets/img/imagenes/nivel3/salto/Salto_16.png")
+loader.add("salto17", "assets/img/imagenes/nivel3/salto/Salto_17.png")
+loader.add("salto18", "assets/img/imagenes/nivel3/salto/Salto_18.png")
+loader.add("salto19", "assets/img/imagenes/nivel3/salto/Salto_19.png")
+loader.add("salto20", "assets/img/imagenes/nivel3/salto/Salto_20.png")
+loader.add("salto21", "assets/img/imagenes/nivel3/salto/Salto_21.png")
+loader.add("salto22", "assets/img/imagenes/nivel3/salto/Salto_22.png")
+loader.add("salto23", "assets/img/imagenes/nivel3/salto/Salto_23.png")
+loader.add("salto24", "assets/img/imagenes/nivel3/salto/Salto_24.png")
+loader.add("salto25", "assets/img/imagenes/nivel3/salto/Salto_25.png");
 
-loader.add("abajo0", "assets/img/imagenes/nivel1/agachar/agachado_0.png");
-loader.add("abajo1", "assets/img/imagenes/nivel1/agachar/agachado_1.png");
-loader.add("abajo2", "assets/img/imagenes/nivel1/agachar/agachado_2.png");
-loader.add("abajo3", "assets/img/imagenes/nivel1/agachar/agachado_3.png");
-loader.add("abajo4", "assets/img/imagenes/nivel1/agachar/agachado_4.png");
-loader.add("abajo5", "assets/img/imagenes/nivel1/agachar/agachado_0.png");
-loader.add("abajo6", "assets/img/imagenes/nivel1/agachar/agachado_6.png");
-loader.add("abajo7", "assets/img/imagenes/nivel1/agachar/agachado_7.png");
-loader.add("abajo8", "assets/img/imagenes/nivel1/agachar/agachado_8.png");
-loader.add("abajo9", "assets/img/imagenes/nivel1/agachar/agachado_9.png");
-loader.add("abajo10", "assets/img/imagenes/nivel1/agachar/agachado_10.png");
-loader.add("abajo11", "assets/img/imagenes/nivel1/agachar/agachado_11.png");
-loader.add("abajo12", "assets/img/imagenes/nivel1/agachar/agachado_12.png");
-loader.add("abajo13", "assets/img/imagenes/nivel1/agachar/agachado_13.png");
-loader.add("abajo14", "assets/img/imagenes/nivel1/agachar/agachado_14.png");
-loader.add("abajo15", "assets/img/imagenes/nivel1/agachar/agachado_15.png");
-loader.add("abajo16", "assets/img/imagenes/nivel1/agachar/agachado_16.png");
-loader.add("abajo17", "assets/img/imagenes/nivel1/agachar/agachado_17.png");
-loader.add("abajo18", "assets/img/imagenes/nivel1/agachar/agachado_18.png");
-loader.add("abajo19", "assets/img/imagenes/nivel1/agachar/agachado_19.png");
-loader.add("abajo20", "assets/img/imagenes/nivel1/agachar/agachado_20.png");
-loader.add("abajo21", "assets/img/imagenes/nivel1/agachar/agachado_21.png");
-loader.add("abajo22", "assets/img/imagenes/nivel1/agachar/agachado_22.png");
-loader.add("abajo23", "assets/img/imagenes/nivel1/agachar/agachado_23.png");
-loader.add("abajo24", "assets/img/imagenes/nivel1/agachar/agachado_24.png");
-loader.add("abajo25", "assets/img/imagenes/nivel1/agachar/agachado_25.png");
+loader.add("abajo0", "assets/img/imagenes/nivel3/agachar/Agacharse_0.png");
+loader.add("abajo1", "assets/img/imagenes/nivel3/agachar/Agacharse_1.png");
+loader.add("abajo2", "assets/img/imagenes/nivel3/agachar/Agacharse_2.png");
+loader.add("abajo3", "assets/img/imagenes/nivel3/agachar/Agacharse_3.png");
+loader.add("abajo4", "assets/img/imagenes/nivel3/agachar/Agacharse_4.png");
+loader.add("abajo5", "assets/img/imagenes/nivel3/agachar/Agacharse_5.png");
+loader.add("abajo6", "assets/img/imagenes/nivel3/agachar/Agacharse_6.png");
+loader.add("abajo7", "assets/img/imagenes/nivel3/agachar/Agacharse_7.png");
+loader.add("abajo8", "assets/img/imagenes/nivel3/agachar/Agacharse_8.png");
+loader.add("abajo9", "assets/img/imagenes/nivel3/agachar/Agacharse_9.png");
+loader.add("abajo10", "assets/img/imagenes/nivel3/agachar/Agacharse_10.png");
+loader.add("abajo11", "assets/img/imagenes/nivel3/agachar/Agacharse_11.png");
+loader.add("abajo12", "assets/img/imagenes/nivel3/agachar/Agacharse_12.png");
+loader.add("abajo13", "assets/img/imagenes/nivel3/agachar/Agacharse_13.png");
+loader.add("abajo14", "assets/img/imagenes/nivel3/agachar/Agacharse_14.png");
+loader.add("abajo15", "assets/img/imagenes/nivel3/agachar/Agacharse_15.png");
+loader.add("abajo16", "assets/img/imagenes/nivel3/agachar/Agacharse_16.png");
+loader.add("abajo17", "assets/img/imagenes/nivel3/agachar/Agacharse_17.png");
+loader.add("abajo18", "assets/img/imagenes/nivel3/agachar/Agacharse_18.png");
+loader.add("abajo19", "assets/img/imagenes/nivel3/agachar/Agacharse_19.png");
+loader.add("abajo20", "assets/img/imagenes/nivel3/agachar/Agacharse_20.png");
+loader.add("abajo21", "assets/img/imagenes/nivel3/agachar/Agacharse_21.png");
+loader.add("abajo22", "assets/img/imagenes/nivel3/agachar/Agacharse_22.png");
+loader.add("abajo23", "assets/img/imagenes/nivel3/agachar/Agacharse_23.png");
+loader.add("abajo24", "assets/img/imagenes/nivel3/agachar/Agacharse_24.png");
+loader.add("abajo25", "assets/img/imagenes/nivel3/agachar/Agacharse_25.png");
 
 loader.load();
 loader.onError.add((e, d) => {
@@ -163,6 +168,7 @@ loader.onComplete.add((loader, resources) => {
   frente = resources["frente"].texture;
   Heroe = resources["heroe"].texture;
   SoundExplosion = resources["SoundExplosion"].sound;
+  SoundFondo = resources["SoundFondo"].sound;
   console.log('Imagenes cargadas completamente')
 })
 
@@ -315,10 +321,13 @@ function getCookie(nombre) {
 function piedras() {
 
   //
+  
+  SoundFondo.play();
   piedra.position.x -= 8 + complejidad;
 
   if (contado6r == "10" || contado6r == "20" || contado6r == "30" || contado6r == "40" || contado6r == "50" || contado6r == "60") {
     
+  SoundFondo.stop();
   SoundExplosion.play();
     preguntacharlas();
   } else if (contado6r == "61") {
@@ -330,6 +339,7 @@ function piedras() {
       canvas.classList.add("invisible")
 
       game.stop();
+  SoundFondo.stop();
 
       let video = document.querySelector(".video2")
       video.classList.remove("invisible")
@@ -346,6 +356,7 @@ function piedras() {
   } else {
     if (chocar(piedra, jugador1)) {
       if (bandera1 == 1) {
+        SoundFondo.stop();
         SoundExplosion.play();
         pregunta();
       }
@@ -892,7 +903,7 @@ function iniciaGame() {
 function preguntacharlas() {
   let nombre_puntos_cookie = "puntaje"; 
   document.cookie = `${nombre_puntos_cookie}=${puntos}`;
-  let divPreguntas = document.querySelector('.seccion-preguntas');
+  let divPreguntas = document.querySelector('.seccion-preguntas3');
   divPreguntas.classList.remove('invisible');
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.add('invisible');
@@ -912,7 +923,7 @@ function preguntacharlas() {
 }
 function pregunta() {
   let nombre_puntos_cookie = "puntaje"; document.cookie = `${nombre_puntos_cookie}=${puntos}`;
-  let divPreguntas = document.querySelector('.seccion-preguntas');
+  let divPreguntas = document.querySelector('.seccion-preguntas3');
   divPreguntas.classList.remove('invisible');
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.add('invisible');
@@ -1518,6 +1529,7 @@ function evaluarPregunta(opcion) {
         
         SoundExplosion.stop(); 
             continuarGame();
+            SoundFondo.play();
             }, 2000);
     } else if (opcion == 5) {
       swal("No respondiste a tiempo , pierdes 5 puntos", {
@@ -1529,8 +1541,9 @@ function evaluarPregunta(opcion) {
       puntos -= 5;
       piedra.position.x = 1310;
       setTimeout(() => {
-        
-      continuarGame();
+        SoundExplosion.stop(); 
+            continuarGame();
+            SoundFondo.play();
       }, 2000);
 
     }
@@ -1549,12 +1562,13 @@ function evaluarPregunta(opcion) {
       contado6r++;
       console.log(contado6r);
       setTimeout(() => {
-        
-      continuarGame();
+        SoundExplosion.stop(); 
+            continuarGame();
+            SoundFondo.play();
       }, 2000);
     }
   }
-  let divPreguntas = document.querySelector('.seccion-preguntas');
+  let divPreguntas = document.querySelector('.seccion-preguntas3');
   divPreguntas.classList.add('invisible');
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.remove('invisible');
@@ -1572,6 +1586,7 @@ function continuarGame() {
 
 function pausar() {
   game.stop();
+  SoundFondo.stop();
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.add('invisible');
   let divRea = document.querySelector('.reanudar');
@@ -1580,6 +1595,7 @@ function pausar() {
 
 function reanudar() {
   game.start();
+  SoundFondo.play();
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.remove('invisible');
   let divRea = document.querySelector('.reanudar');

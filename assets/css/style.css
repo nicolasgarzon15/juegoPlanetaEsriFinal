@@ -165,6 +165,17 @@ button, input[type="submit"], input[type="reset"] {
     grid-template-columns: 10% 40% 40% 10%;
     grid-template-rows: 10% 30% 5% 55%;
 }
+.seccion-preguntas3{
+    margin-top: 3vw;
+    /* background: linear-gradient(to bottom right,rgb(255, 251, 6), rgb(243, 110, 1));; */
+    background: url(../img/Escenario_3/Completo.png);
+    background-position: center center;
+    background-size: cover;    
+    height: 93vh;
+    display: grid;
+    grid-template-columns: 10% 40% 40% 10%;
+    grid-template-rows: 10% 30% 5% 55%;
+}
 .transparencia{
     grid-column:1/5;
     grid-row: 1/5;
@@ -176,6 +187,16 @@ button, input[type="submit"], input[type="reset"] {
     grid-column:2/4;
     grid-row: 2/3;  
     background-color: #e8a465;
+    z-index: 50;
+    padding: 1vh;
+    opacity: 0.7;
+    border-radius: 20px;
+    font-size: 1.2vw;
+}
+.header-pregunta3{
+    grid-column:2/4;
+    grid-row: 2/3;  
+    background-color: #66ee93;
     z-index: 50;
     padding: 1vh;
     opacity: 0.7;
@@ -240,6 +261,52 @@ z-index: 40;
     grid-column: 3;
     grid-row: 3;
     background-color: #e8a465;
+    border-radius: 20px;
+    margin-left: 1vw;
+    padding: 1vw;
+    display: flex;
+    opacity: 0.7;
+    height: 70%;
+}
+.div_respuestaA3{
+    grid-column: 1;
+    grid-row: 1;
+    background-color:  #66ee93;
+    border-radius: 20px;
+    margin-right: 1vw;
+    margin-bottom: 1vw;
+    padding: 1vw;
+    display: flex;
+    opacity: 0.7;
+    height: 70%;
+}
+.div_respuestaB3{
+    grid-column: 3;
+    grid-row: 1;
+    background-color:#66ee93;
+    border-radius: 20px;
+    margin-left: 1vw;
+    margin-bottom: 1vw;
+    padding: 1vw;
+    display: flex;
+    opacity: 0.7;
+    height: 70%;
+}
+.div_respuestaC3{
+    grid-column: 1;
+    grid-row: 3;
+    background-color:#66ee93;
+    border-radius: 20px;
+    margin-right: 1vw;
+    padding: 1vw;
+    display: flex;
+    opacity: 0.7;
+    height: 70%;
+}
+.div_respuestaD3{
+    grid-column: 3;
+    grid-row: 3;
+    background-color: #66ee93;
     border-radius: 20px;
     margin-left: 1vw;
     padding: 1vw;

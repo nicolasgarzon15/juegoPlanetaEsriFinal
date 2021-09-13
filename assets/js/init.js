@@ -48,6 +48,7 @@ let nivel = 0;
 let puntos = 0;
 let puntoAdicional = 0;
 
+let SoundFondo;
 let SoundExplosion;
 let jugadorAgachadoIMG;
 let jugadorSaltoIMG;
@@ -67,6 +68,7 @@ loader.add("nubes", "assets/img/Escenario_1/nubes.png")
   .add("medio", "assets/img/Escenario_1/medio.png")
   .add("frente", "assets/img/Escenario_1/Frente.png")
   .add("heroe", "assets/img/heroe.png")
+  .add("SoundFondo", "assets/sound/fondo.mp3")
   .add("SoundExplosion", "assets/sound/choque.mp3")
   .add("texturapiedra", "assets/img/imagenes/props/obstaculonivel1.png")
   .add("texturaappstudio", "assets/img/imagenes/props/appstudio.png")
@@ -163,6 +165,7 @@ loader.onComplete.add((loader, resources) => {
   frente = resources["frente"].texture;
   Heroe = resources["heroe"].texture;
   SoundExplosion = resources["SoundExplosion"].sound;
+  SoundFondo = resources["SoundFondo"].sound;
   console.log('Imagenes cargadas completamente')
 })
 
@@ -315,10 +318,13 @@ function getCookie(nombre) {
 function piedras() {
 
   //
+  
+  SoundFondo.play();
   piedra.position.x -= 8 + complejidad;
 
   if (contado6r == "10" || contado6r == "20" || contado6r == "30" || contado6r == "40" || contado6r == "50" || contado6r == "60") {
     
+  SoundFondo.stop();
   SoundExplosion.play();
     preguntacharlas();
   } else if (contado6r == "61") {
@@ -330,6 +336,7 @@ function piedras() {
       canvas.classList.add("invisible")
 
       game.stop();
+      SoundFondo.stop();
 
       let video = document.querySelector(".video2")
       video.classList.remove("invisible")
@@ -346,6 +353,7 @@ function piedras() {
   } else {
     if (chocar(piedra, jugador1)) {
       if (bandera1 == 1) {
+        SoundFondo.stop();
         SoundExplosion.play();
         pregunta();
       }
@@ -1518,6 +1526,7 @@ function evaluarPregunta(opcion) {
         
         SoundExplosion.stop(); 
             continuarGame();
+            SoundFondo.play();
             }, 2000);
     } else if (opcion == 5) {
       swal("No respondiste a tiempo , pierdes 5 puntos", {
@@ -1529,8 +1538,9 @@ function evaluarPregunta(opcion) {
       puntos -= 5;
       piedra.position.x = 1310;
       setTimeout(() => {
-        
-      continuarGame();
+        SoundExplosion.stop(); 
+            continuarGame();
+            SoundFondo.play();
       }, 2000);
 
     }
@@ -1549,8 +1559,9 @@ function evaluarPregunta(opcion) {
       contado6r++;
       console.log(contado6r);
       setTimeout(() => {
-        
-      continuarGame();
+        SoundExplosion.stop(); 
+            continuarGame();
+            SoundFondo.play();
       }, 2000);
     }
   }
@@ -1572,6 +1583,7 @@ function continuarGame() {
 
 function pausar() {
   game.stop();
+  SoundFondo.stop();
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.add('invisible');
   let divRea = document.querySelector('.reanudar');
@@ -1580,6 +1592,7 @@ function pausar() {
 
 function reanudar() {
   game.start();
+  SoundFondo.play();
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.remove('invisible');
   let divRea = document.querySelector('.reanudar');
