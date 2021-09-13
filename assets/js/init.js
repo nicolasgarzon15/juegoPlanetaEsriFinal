@@ -317,11 +317,11 @@ function piedras() {
   //
   piedra.position.x -= 8 + complejidad;
 
-  if (contado6r == "10" || contado6r == "20" || contado6r == "30" || contado6r == "40" || contado6r == "50" || contado6r == "60" || contado6r == "70" || contado6r == "80" || contado6r == "90" || contado6r == "100") {
+  if (contado6r == "10" || contado6r == "20" || contado6r == "30" || contado6r == "40" || contado6r == "50" || contado6r == "60") {
     
   SoundExplosion.play();
     preguntacharlas();
-  } else if (contado6r == "101") {
+  } else if (contado6r == "61") {
     contado6r++;
     puntos += 100;
     document.querySelector(".puntos").innerHTML = puntos;
