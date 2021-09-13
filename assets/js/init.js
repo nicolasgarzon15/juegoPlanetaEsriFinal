@@ -48,6 +48,7 @@ let nivel = 0;
 let puntos = 0;
 let puntoAdicional = 0;
 
+let SoundExplosion;
 let jugadorAgachadoIMG;
 let jugadorSaltoIMG;
 let jugadorCaminadoIMG;
@@ -66,6 +67,7 @@ loader.add("nubes", "assets/img/Escenario_1/nubes.png")
   .add("medio", "assets/img/Escenario_1/medio.png")
   .add("frente", "assets/img/Escenario_1/Frente.png")
   .add("heroe", "assets/img/heroe.png")
+  .add("SoundExplosion", "assets/sound/choque.mp3")
   .add("texturapiedra", "assets/img/imagenes/props/obstaculonivel1.png")
   .add("texturaappstudio", "assets/img/imagenes/props/appstudio.png")
   .add("texturemoneda", "assets/img/imagenes/nivel1/moneda.png")
@@ -160,6 +162,7 @@ loader.onComplete.add((loader, resources) => {
   medio = resources["medio"].texture;
   frente = resources["frente"].texture;
   Heroe = resources["heroe"].texture;
+  SoundExplosion = resources["SoundExplosion"].sound;
   console.log('Imagenes cargadas completamente')
 })
 
@@ -315,6 +318,8 @@ function piedras() {
   piedra.position.x -= 8 + complejidad;
 
   if (contado6r == "10" || contado6r == "20" || contado6r == "30" || contado6r == "40" || contado6r == "50" || contado6r == "60" || contado6r == "70" || contado6r == "80" || contado6r == "90" || contado6r == "100") {
+    
+  SoundExplosion.play();
     preguntacharlas();
   } else if (contado6r == "101") {
     contado6r++;
@@ -341,6 +346,7 @@ function piedras() {
   } else {
     if (chocar(piedra, jugador1)) {
       if (bandera1 == 1) {
+        SoundExplosion.play();
         pregunta();
       }
       else if (bandera1 == 2) {
@@ -1508,7 +1514,11 @@ function evaluarPregunta(opcion) {
       piedra.position.x = 1310;
       contado6r++;
       console.log(contado6r);
-      continuarGame();
+      setTimeout(() => {
+        
+        SoundExplosion.stop(); 
+            continuarGame();
+            }, 2000);
     } else if (opcion == 5) {
       swal("No respondiste a tiempo , pierdes 5 puntos", {
         icon: "error",
@@ -1521,7 +1531,7 @@ function evaluarPregunta(opcion) {
       setTimeout(() => {
         
       continuarGame();
-      }, 3000);
+      }, 2000);
 
     }
     else {
@@ -1541,7 +1551,7 @@ function evaluarPregunta(opcion) {
       setTimeout(() => {
         
       continuarGame();
-      }, 3000);
+      }, 2000);
     }
   }
   let divPreguntas = document.querySelector('.seccion-preguntas');
