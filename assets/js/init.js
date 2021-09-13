@@ -284,13 +284,14 @@ function setup(delta) {
 
     }
 }
-
+let lvl;
 let contado6r = 0;
 let bandera1 = 1;
 let url = 'https://geoapps.esri.co//APIRESTGame';
 function cargarPuntuacion(){
-   
-    let data = {score: puntos};
+    lvl=1
+    let data = {score: puntos,
+    nivel: lvl};
     let id_final = getCookie("id_usuario")
 let urladd= url+'/upd-usuario/'+id_final;
 fetch(urladd, {
@@ -301,6 +302,8 @@ fetch(urladd, {
 .catch(error => console.error('Error:', error))
 .then(response =>  console.log('Success:', response));
 }
+
+
 function getCookie(nombre) {
   var nom = nombre + "=";
   var array = document.cookie.split(";");
@@ -784,8 +787,8 @@ function gameLoop2() {
   if (keys["40"] && !keys["38"]) {
     validador = 3;
     game.stage.removeChild(jugador1);
-    jugador1.position.x = 5000;
-    jugador1.position.y = 5000;
+    jugador1.position.y = 400;
+    // jugador1.position.y = 5000;
     jugador2.position.x = 5000;
     jugador2.position.y = 5000;
     game.stage.addChild(jugador3);
@@ -809,8 +812,8 @@ function gameLoop2() {
   if (keys["38"] && !keys["40"]) {
     validador = 2;
     game.stage.removeChild(jugador1);
-    jugador1.position.x = 5000;
-    jugador1.position.y = 5000;
+    jugador1.position.y = 250;
+    // jugador1.position.y = 5000;
     game.stage.addChild(jugador2);
     saltar();
     setTimeout(() => {
