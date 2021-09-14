@@ -290,14 +290,13 @@ function setup(delta) {
 
     }
 }
-let lvl;
+
 let contado6r = 0;
 let bandera1 = 1;
 let url = 'https://geoapps.esri.co//APIRESTGame';
 function cargarPuntuacion(){
-    lvl=1
-    let data = {score: puntos,
-    nivel: lvl};
+   
+    let data = {score: puntos};
     let id_final = getCookie("id_usuario")
 let urladd= url+'/upd-usuario/'+id_final;
 fetch(urladd, {
@@ -308,8 +307,6 @@ fetch(urladd, {
 .catch(error => console.error('Error:', error))
 .then(response =>  console.log('Success:', response));
 }
-
-
 function getCookie(nombre) {
   var nom = nombre + "=";
   var array = document.cookie.split(";");
@@ -334,40 +331,24 @@ function piedras() {
   if (contado6r == "10" || contado6r == "20" || contado6r == "30" || contado6r == "40" || contado6r == "50" || contado6r == "60") {
     
   // SoundFondo.stop();
-  SoundMoneda.play();
-    //preguntacharlas();
-    piedra.texture = loader.resources.texturaplaneta.texture;
-    piedra.position.x = 1310;
-    piedra.position.y = 350;
-    //piedra.height = 100;
-    //piedra.width = 100;
-    // complejidad += 0.25;
-    contado6r++;
-    bandera1 = 4;
+  SoundExplosion.play();
+    preguntacharlas();
   } else if (contado6r == "61") {
     contado6r++;
     puntos += 100;
     document.querySelector(".puntos").innerHTML = puntos;
     setTimeout(() => {
       let canvas = document.querySelector(".container")
-      let portal = document.querySelector(".video3")
       canvas.classList.add("invisible")
 
       game.stop();
-      // SoundFondo.stop();
-
-      portal.classList.remove("invisible");
-
-      setTimeout(() => {
-        portal.classList.add("invisible")
-      }, 4000);
-
+  // SoundFondo.stop();
 
       let video = document.querySelector(".video2")
       video.classList.remove("invisible")
       setTimeout(() => {
 
-        location.href = 'PLANETA_ESRI_2021/juego3.html';
+        location.href = 'PLANETA_ESRI_2021/podio.html';
         cargarPuntuacion();
       }, 32000);
       // alert("nivel terminado")
@@ -386,19 +367,11 @@ function piedras() {
         puntos += randomInt(8, 15);
         document.querySelector(".puntos").innerHTML = puntos;
         piedra.position.x = -9;
-        
-  SoundMoneda.play();
+        SoundMoneda.play();
       } else {
         puntos -= 16;
         document.querySelector(".puntos").innerHTML = puntos;
         piedra.position.x = -9;
-        SoundExplosion.play();
-      } if (bandera1 == 4) {
-        preguntacharlas();
-
-        piedra.position.x = -9;
-        
-  SoundMoneda.play();
       }
 
     }
@@ -818,8 +791,8 @@ function gameLoop2() {
   if (keys["40"] && !keys["38"]) {
     validador = 3;
     game.stage.removeChild(jugador1);
-    jugador1.position.y = 400;
-    // jugador1.position.y = 5000;
+    jugador1.position.x = 5000;
+    jugador1.position.y = 5000;
     jugador2.position.x = 5000;
     jugador2.position.y = 5000;
     game.stage.addChild(jugador3);
@@ -843,8 +816,8 @@ function gameLoop2() {
   if (keys["38"] && !keys["40"]) {
     validador = 2;
     game.stage.removeChild(jugador1);
-    jugador1.position.y = 250;
-    // jugador1.position.y = 5000;
+    jugador1.position.x = 5000;
+    jugador1.position.y = 5000;
     game.stage.addChild(jugador2);
     saltar();
     setTimeout(() => {
@@ -916,6 +889,7 @@ function play(delta) {
   startReloj();
 }
 
+
 function iniciaGame() {
 
   let divName = document.querySelector('.nombre');
@@ -933,7 +907,7 @@ function iniciaGame() {
 function preguntacharlas() {
   let nombre_puntos_cookie = "puntaje"; 
   document.cookie = `${nombre_puntos_cookie}=${puntos}`;
-  let divPreguntas = document.querySelector('.seccion-preguntas');
+  let divPreguntas = document.querySelector('.seccion-preguntas3');
   divPreguntas.classList.remove('invisible');
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.add('invisible');
@@ -953,7 +927,7 @@ function preguntacharlas() {
 }
 function pregunta() {
   let nombre_puntos_cookie = "puntaje"; document.cookie = `${nombre_puntos_cookie}=${puntos}`;
-  let divPreguntas = document.querySelector('.seccion-preguntas');
+  let divPreguntas = document.querySelector('.seccion-preguntas3');
   divPreguntas.classList.remove('invisible');
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.add('invisible');
@@ -1545,7 +1519,7 @@ function evaluarPregunta(opcion) {
   contador.classList.add('invisible')
   if (opcion != null) {
     if (posibles_respuestas[opcion] === respuestaCorrecta) {
-      swal("Respuesta correcta, ganaste 8 puntos", {
+      swal("Respuesta Correcta , Ganaste 8 puntos", {
         icon: "success",
         button: false,
         timer: 2000,
@@ -1578,7 +1552,7 @@ function evaluarPregunta(opcion) {
 
     }
     else {
-      swal("Respuesta incorrecta, perdiste 5 puntos", {
+      swal("Respuesta incorrecta , perdiste 5 puntos", {
         icon: "error",
         button: false,
         timer: 2000,
@@ -1598,7 +1572,7 @@ function evaluarPregunta(opcion) {
       }, 2000);
     }
   }
-  let divPreguntas = document.querySelector('.seccion-preguntas');
+  let divPreguntas = document.querySelector('.seccion-preguntas3');
   divPreguntas.classList.add('invisible');
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.remove('invisible');
