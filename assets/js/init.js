@@ -364,13 +364,13 @@ function piedras() {
         pregunta();
       }
       else if (bandera1 == 2) {
-        puntos += 2;
+        puntos += randomInt(8, 15);
         document.querySelector(".puntos").innerHTML = puntos;
         piedra.position.x = -9;
         
   SoundMoneda.play();
       } else {
-        puntos -= 3;
+        puntos -= 16;
         document.querySelector(".puntos").innerHTML = puntos;
         piedra.position.x = -9;
         SoundExplosion.play();
@@ -378,7 +378,7 @@ function piedras() {
 
     }
     if (piedra.position.x < 10) {
-      puntos += 1;
+      puntos += 10;
       document.querySelector(".puntos").innerHTML = puntos;
       let aleatorio = randomInt(1, 8);
       //let aleatorio = 3;
