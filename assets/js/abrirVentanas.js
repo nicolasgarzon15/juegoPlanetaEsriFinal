@@ -19,9 +19,14 @@ function abrirJuego() {
     video.style.display = "block";
     console.log(video);
     setTimeout(() => {
-      video.setAttribute("muted",true);
+      var imgReto=document.querySelector(".imagen-reto1");
         document.getElementById("video1").style.visibility = "hidden";
-        iniciaGame();
+        console.log(imgReto);
+        imgReto.classList.remove("invisible");
+        setTimeout(() => {
+          imgReto.classList.add("invisible");
+          iniciaGame();
+        }, 3000);
         var nombre = getCookie("nombre");
         document.querySelector(".nombre").innerHTML = nombre; 
 

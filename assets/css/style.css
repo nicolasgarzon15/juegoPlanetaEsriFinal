@@ -387,8 +387,6 @@ z-index: 40;
 	to   {  transform: rotate(270deg) translateX(60px); }
 }
 
-
-
 .running {
     border-style: double;
     border-width: 0 0 0 10px;
@@ -397,3 +395,9 @@ video{
     width: 100vw !important;
     height: 100vh !important;
 }
+ .imagen-reto1 {
+    background: url(../img/reto/reto_1.png);
+    background-position: center center;
+    background-size: cover;    
+    height: 93vh;
+ }

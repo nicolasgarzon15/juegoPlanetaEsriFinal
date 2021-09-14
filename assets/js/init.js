@@ -73,9 +73,10 @@ loader.add("nubes", "assets/img/Escenario_1/nubes.png")
   .add("SoundExplosion", "assets/sound/choque.mp3")
   .add("SoundMoneda", "assets/sound/moneda.wav")
   .add("texturapiedra", "assets/img/imagenes/props/obstaculonivel1.png")
-  .add("texturaappstudio", "assets/img/imagenes/props/appstudio.png")
+  .add("texturaplaneta", "assets/img/imagenes/nivel1/planeta.png")
   .add("texturemoneda", "assets/img/imagenes/nivel1/moneda.png")
   .add("texturepajaro", "assets/img/imagenes/nivel1/pajaro.png")
+  
 loader.add("caminando0", "assets/img/imagenes/nivel1/caminado/caminado_0.png")
 loader.add("caminando1", "assets/img/imagenes/nivel1/caminado/caminado_1.png")
 loader.add("caminando2", "assets/img/imagenes/nivel1/caminado/caminado_2.png")
@@ -332,17 +333,33 @@ function piedras() {
     
   // SoundFondo.stop();
   SoundMoneda.play();
-    preguntacharlas();
+    //preguntacharlas();
+    piedra.texture = loader.resources.texturaplaneta.texture;
+    piedra.position.x = 1310;
+    piedra.position.y = 350;
+    //piedra.height = 100;
+    //piedra.width = 100;
+    // complejidad += 0.25;
+    contado6r++;
+    bandera1 = 4;
   } else if (contado6r == "61") {
     contado6r++;
     puntos += 100;
     document.querySelector(".puntos").innerHTML = puntos;
     setTimeout(() => {
       let canvas = document.querySelector(".container")
+      let portal = document.querySelector(".video3")
       canvas.classList.add("invisible")
 
       game.stop();
       // SoundFondo.stop();
+
+      portal.classList.remove("invisible");
+
+      setTimeout(() => {
+        portal.classList.add("invisible")
+      }, 4000);
+
 
       let video = document.querySelector(".video2")
       video.classList.remove("invisible")
@@ -374,6 +391,12 @@ function piedras() {
         document.querySelector(".puntos").innerHTML = puntos;
         piedra.position.x = -9;
         SoundExplosion.play();
+      } if (bandera1 == 4) {
+        preguntacharlas();
+
+        piedra.position.x = -9;
+        
+  SoundMoneda.play();
       }
 
     }
@@ -890,7 +913,6 @@ function play(delta) {
 
   startReloj();
 }
-
 
 function iniciaGame() {
 
@@ -1521,7 +1543,7 @@ function evaluarPregunta(opcion) {
   contador.classList.add('invisible')
   if (opcion != null) {
     if (posibles_respuestas[opcion] === respuestaCorrecta) {
-      swal("Respuesta Correcta , Ganaste 8 puntos", {
+      swal("Respuesta correcta, ganaste 8 puntos", {
         icon: "success",
         button: false,
         timer: 2000,
@@ -1554,7 +1576,7 @@ function evaluarPregunta(opcion) {
 
     }
     else {
-      swal("Respuesta incorrecta , perdiste 5 puntos", {
+      swal("Respuesta incorrecta, perdiste 5 puntos", {
         icon: "error",
         button: false,
         timer: 2000,
