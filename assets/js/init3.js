@@ -48,6 +48,7 @@ let nivel = 0;
 let puntos = 0;
 let puntoAdicional = 0;
 
+let SoundMoneda;
 let SoundFondo;
 let SoundExplosion;
 let jugadorAgachadoIMG;
@@ -70,6 +71,7 @@ loader.add("nubes", "assets/img/Escenario_3/nube.png")
   .add("heroe", "assets/img/heroe.png")
   .add("SoundFondo", "assets/sound/fondo.mp3")
   .add("SoundExplosion", "assets/sound/choque.mp3")
+  .add("SoundMoneda", "assets/sound/moneda.wav")
   .add("texturapiedra", "assets/img/imagenes/props/obstaculonivel1.png")
   .add("texturaappstudio", "assets/img/imagenes/props/appstudio.png")
   .add("texturemoneda", "assets/img/imagenes/nivel1/moneda.png")
@@ -169,6 +171,7 @@ loader.onComplete.add((loader, resources) => {
   Heroe = resources["heroe"].texture;
   SoundExplosion = resources["SoundExplosion"].sound;
   SoundFondo = resources["SoundFondo"].sound;
+  SoundMoneda = resources["SoundMoneda"].sound;
   console.log('Imagenes cargadas completamente')
 })
 
@@ -322,12 +325,12 @@ function piedras() {
 
   //
   
-  SoundFondo.play();
+  // SoundFondo.play();
   piedra.position.x -= 8 + complejidad;
 
   if (contado6r == "10" || contado6r == "20" || contado6r == "30" || contado6r == "40" || contado6r == "50" || contado6r == "60") {
     
-  SoundFondo.stop();
+  // SoundFondo.stop();
   SoundExplosion.play();
     preguntacharlas();
   } else if (contado6r == "61") {
@@ -339,7 +342,7 @@ function piedras() {
       canvas.classList.add("invisible")
 
       game.stop();
-  SoundFondo.stop();
+  // SoundFondo.stop();
 
       let video = document.querySelector(".video2")
       video.classList.remove("invisible")
@@ -356,7 +359,7 @@ function piedras() {
   } else {
     if (chocar(piedra, jugador1)) {
       if (bandera1 == 1) {
-        SoundFondo.stop();
+        // SoundFondo.stop();
         SoundExplosion.play();
         pregunta();
       }
@@ -364,6 +367,7 @@ function piedras() {
         puntos += 2;
         document.querySelector(".puntos").innerHTML = puntos;
         piedra.position.x = -9;
+        SoundMoneda.play();
       } else {
         puntos -= 3;
         document.querySelector(".puntos").innerHTML = puntos;
@@ -1529,7 +1533,7 @@ function evaluarPregunta(opcion) {
         
         SoundExplosion.stop(); 
             continuarGame();
-            SoundFondo.play();
+            // SoundFondo.play();
             }, 2000);
     } else if (opcion == 5) {
       swal("No respondiste a tiempo , pierdes 5 puntos", {
@@ -1543,7 +1547,7 @@ function evaluarPregunta(opcion) {
       setTimeout(() => {
         SoundExplosion.stop(); 
             continuarGame();
-            SoundFondo.play();
+            // SoundFondo.play();
       }, 2000);
 
     }
@@ -1564,7 +1568,7 @@ function evaluarPregunta(opcion) {
       setTimeout(() => {
         SoundExplosion.stop(); 
             continuarGame();
-            SoundFondo.play();
+            // SoundFondo.play();
       }, 2000);
     }
   }
@@ -1586,7 +1590,7 @@ function continuarGame() {
 
 function pausar() {
   game.stop();
-  SoundFondo.stop();
+  // SoundFondo.stop();
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.add('invisible');
   let divRea = document.querySelector('.reanudar');
@@ -1595,7 +1599,7 @@ function pausar() {
 
 function reanudar() {
   game.start();
-  SoundFondo.play();
+  // SoundFondo.play();
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.remove('invisible');
   let divRea = document.querySelector('.reanudar');
