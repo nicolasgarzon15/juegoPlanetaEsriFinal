@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OLIMPICS GEEK</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.0.0/pixi.min.js"></script>
+    <script src="assets/js/conteo.js"></script>
+    <script src="assets/js/abrirventanas.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body onload="abrirJuego2()">
+    <div class="container">
+        <div class="pantalla">
+            <div class="cont">
+               
+            </div>
+        </div>
+        <div class="puntos invisible" >0</div>
+        <div class="ganoPuntos invisible">+0</div>
+        <div class="ganoPuntos2 invisible">+0</div>
+        <div class="perdioPuntos invisible">-0</div>
+
+        <div  class="nombre invisible">Name:</div>
+    
+        <div class="reloj" id="reloj" >00:00</div>
+        <div class="pausa invisible"><button onclick="pausar()"> <i class="far fa-pause-circle"></i></button></div>
+        <div class="reanudar invisible"><button onclick="reanudar()"> <i class="far fa-play-circle"></i></button></div>
+        <div class="contador invisible"></div>
+
+        <div width="100%" heigth="100vh">
+            <img class="reto2" src="assets/videos/reto2.png" width="100%" heigth="100vh">
+            <script>
+                setTimeout(()=>{
+                    let cambioImagen = document.querySelector('.reto2');
+                    cambioImagen.classList.add('invisible');
+                }, 3000);
+            </script>
+        </div>
+
+        <div id="juego"></div>
+        <div id="video1">
+            <video width="100%" height="100%" autoplay muted>
+                <source src="assets/videos/inicio nivel2_ portal.mp4" type="video/mp4">
+                Tu navegador no es compatible con vídeos HTML5
+            </video>
+        </div>
+
+        <div class="pregunta">
+            <div class="seccion-preguntas invisible">
+                <div class="transparencia"></div>
+
+                <div class="header-pregunta">
+                    <img id="logoCharla" src="" alt="Logo de" width="100">
+                    <h3 id="charla"></h3>
+                    <h4 id="pregunta" ></h4>
+                </div>
+                <div class="opciones">
+                    <div class="div_respuestaA" onclick="evaluarPregunta(0)">
+                        <p >A. <i id="respuestaA" ></i></p>
+                    </div>
+                    <div class="div_respuestaB" onclick="evaluarPregunta(1)">
+                        <p>B. <i id="respuestaB"></i></p>
+                    </div>
+                    <div class="div_respuestaC" onclick="evaluarPregunta(2)">
+                        <p>C. <i id="respuestaC" ></i></p>
+                    </div>
+                    <div class="div_respuestaD" onclick="evaluarPregunta(3)">
+                        <p>D. <i id="respuestaD" > </i></p>
+                    </div>
+                </div>
+                </div>
+            
+        </div>
+
+            
+        
+        </div>
+    </div>
+    <div class="video2 invisible" style="height:100vh !important;width:100%vw !important;">
+        <video width="100vw" height="100vh" autoplay loop muted>
+            <source src="assets/videos/2final.mp4" type="video/mp4">
+            Tu navegador no es compatible con vídeos HTML5
+        </video>
+    </div>
+    <script src="assets/js/cronometro.js"></script>
+    <script src="assets/js/pixi.min.js"></script>
+    <script src="assets/js/spriteUtilities.js"></script>
+    <script src="assets/js/functions.js"></script>
+    <script src="assets/js/init2.js"></script>
+
+
+</body>
