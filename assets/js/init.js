@@ -292,6 +292,7 @@ let lvl;
 let contado6r = 0;
 let bandera1 = 1;
 let url = 'https://geoapps.esri.co//APIRESTGame';
+
 function cargarPuntuacion(){
     lvl=1
     let data = {score: puntos,

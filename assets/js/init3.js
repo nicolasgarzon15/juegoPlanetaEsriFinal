@@ -213,21 +213,21 @@ function setup(delta) {
 
       let texture1 = loader.resources.caminando0.texture;
       jugador1 = new PIXI.Sprite(texture1)
-      jugador1.position.x = 0;
+      jugador1.position.x = 30;
       jugador1.position.y = 220;
       jugador1.height = 230;
       jugador1.width = 50;
 
       let texture2 = loader.resources.salto0.texture;
       jugador2 = new PIXI.Sprite(texture2)
-      jugador2.position.x = 0;
+      jugador2.position.x = 30;
       jugador2.position.y = 230;
       jugador2.height = 210;
       jugador2.width = 80;
 
       let texture3 = loader.resources.abajo0.texture;
       jugador3 = new PIXI.Sprite(texture3)
-      jugador3.position.x = 0;
+      jugador3.position.x = 30;
       jugador3.position.y = 230;
       jugador3.height = 210;
       jugador3.width = 80;
@@ -307,6 +307,9 @@ fetch(urladd, {
 .then(res => res.json())
 .catch(error => console.error('Error:', error))
 .then(response =>  console.log('Success:', response));
+}
+function traerPuntuacion(){
+  
 }
 
 
@@ -691,9 +694,9 @@ function gameLoop2() {
     game.stage.addChild(jugador3);
     agachar();
     setTimeout(() => {
-      jugador2.position.x = 0;
+      jugador2.position.x = 30;
       jugador2.position.y = 220;
-      jugador1.position.x = 0;
+      jugador1.position.x = 30;
       jugador1.position.y = 220;
       game.stage.addChild(jugador1);
       game.stage.removeChild(jugador3);
@@ -713,7 +716,7 @@ function gameLoop2() {
     game.stage.addChild(jugador2);
     saltar();
     setTimeout(() => {
-      jugador1.position.x = 0;
+      jugador1.position.x = 30;
       jugador1.position.y = 220;
       game.stage.addChild(jugador1);
       game.stage.removeChild(jugador2);
