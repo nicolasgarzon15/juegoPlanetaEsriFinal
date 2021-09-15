@@ -31,11 +31,9 @@ function abrirJuego() {
 function abrirJuego3(){
   var video=document.getElementById("video1");
   video.style.display = "block";
-  console.log(video);
   setTimeout(() => {
       document.getElementById("video1").style.visibility = "hidden";
       var imgReto=document.querySelector(".imagen-reto3");
-      console.log(imgReto);
       imgReto.classList.remove("invisible");
       setTimeout(() => {
         imgReto.classList.add("invisible");

@@ -72,7 +72,7 @@ loader.add("nubes", "assets/img/Escenario_3/nube.png")
   .add("SoundFondo", "assets/sound/fondo.mp3")
   .add("SoundExplosion", "assets/sound/choque.mp3")
   .add("SoundMoneda", "assets/sound/moneda.wav")
-  .add("texturapiedra", "assets/img/imagenes/props/obstaculonivel1.png")
+  .add("texturapiedra", "assets/img/imagenes/props/Obstaculonivel2_1.png")
   .add("texturaplaneta", "assets/img/imagenes/nivel1/planeta.png")
   .add("texturemoneda", "assets/img/imagenes/nivel1/moneda.png")
   .add("texturepajaro", "assets/img/imagenes/nivel1/pajaro.png")
@@ -191,7 +191,7 @@ function init() {
 
   game = new Application({ width: width, height: heightWindow });
   game.renderer.backgroundColor = 0x061639;
-  // game.renderer.autoRezise = true;
+
   document.getElementById("juego").appendChild(game.view);
 
   setup();
@@ -214,31 +214,30 @@ function setup(delta) {
       let texture1 = loader.resources.caminando0.texture;
       jugador1 = new PIXI.Sprite(texture1)
       jugador1.position.x = 0;
-      jugador1.position.y = 350;
-      jugador1.height = 200;
-      jugador1.width = 200;
-      //game.stage.addChild(jugador1);
+      jugador1.position.y = 220;
+      jugador1.height = 230;
+      jugador1.width = 50;
 
       let texture2 = loader.resources.salto0.texture;
       jugador2 = new PIXI.Sprite(texture2)
       jugador2.position.x = 0;
-      jugador2.position.y = 360;
-      jugador2.height = 200;
-      jugador2.width = 200;
+      jugador2.position.y = 230;
+      jugador2.height = 210;
+      jugador2.width = 80;
 
       let texture3 = loader.resources.abajo0.texture;
       jugador3 = new PIXI.Sprite(texture3)
       jugador3.position.x = 0;
-      jugador3.position.y = 360;
-      jugador3.height = 200;
-      jugador3.width = 200;
+      jugador3.position.y = 230;
+      jugador3.height = 210;
+      jugador3.width = 80;
       game.stage.addChild(jugador1);
       // Imagen Piedra
       let texturepiedra = loader.resources.texturapiedra.texture;
       piedra = new PIXI.Sprite(texturepiedra)
       piedra.position.x = 1410;
-      piedra.position.y = 450;
-      piedra.height = 100;
+      piedra.position.y = 340;
+      piedra.height = 110;
       piedra.width = 100;
       game.stage.addChild(piedra);
 
@@ -246,7 +245,7 @@ function setup(delta) {
       let texturemoneda = loader.resources.texturemoneda.texture;
       moneda = new PIXI.Sprite(texturemoneda)
       moneda.position.x = 2100;
-      moneda.position.y = 440;
+      moneda.position.y = 335;
       moneda.height = 70;
       moneda.width = 70;
       game.stage.addChild(moneda);
@@ -255,7 +254,7 @@ function setup(delta) {
       let texturepajaro = loader.resources.texturepajaro.texture;
       pajaro = new PIXI.Sprite(texturepajaro)
       pajaro.position.x = 1810;
-      pajaro.position.y = 250;
+      pajaro.position.y = 80;
       pajaro.height = 70;
       pajaro.width = 70;
       game.stage.addChild(pajaro);
@@ -357,7 +356,7 @@ function piedras() {
       game.stop();
       // SoundFondo.stop();
 
-      if(puntos>300){
+      if(puntos>700){
         let canvas = document.querySelector(".container")
 
         canvas.classList.add("invisible")
@@ -421,70 +420,30 @@ function piedras() {
       if (aleatorio == 1 || aleatorio == 2) {
         piedra.texture = loader.resources.texturapiedra.texture;
         piedra.position.x = 1310;
-        piedra.position.y = 450;
+        piedra.position.y = 335;
         // complejidad += 0.25;
         contado6r++;
         bandera1 = 1;
       } else if (aleatorio == 3) {
         piedra.position.x = 1310;
-        piedra.position.y = 440;
+        piedra.position.y = 335;
         piedra.texture = loader.resources.texturemoneda.texture;
         // complejidad += 0.25;
         contado6r++;
         bandera1 = 2;
       } else {
         piedra.position.x = 1310;
-        piedra.position.y = 270;
+        piedra.position.y = 115;
         piedra.texture = loader.resources.texturepajaro.texture;
         // complejidad += 0.25;
         contado6r++;
         bandera1 = 3;
       }
-      // complejidad+=0.25;
     }
-    // if(moneda.position.x <10){
 
-    //   moneda.position.x = 2100;
-    //   // complejidad+=0.25;
-    // }
-    // if(pajaro.position.x <5){
-
-    //   pajaro.position.x = 1510;
-    //   // complejidad+=0.25;
-    // }
-
-    // if (chocar(piedra, jugador1)) {
-    //         pregunta();
-    // }
-    //   if (chocar(pajaro, jugador1) || chocar(pajaro, jugador2)) {
-    //     //alert("choco")
-    //      puntos-=5;
-    //      document.querySelector(".puntos").innerHTML = puntos;
-    //      pajaro.position.x = 1510;
-    //     //puntos-=5;
-    // }
-    //   if (chocar(moneda, jugador1)) {
-    //               //Sumar puntos
-    //               puntos+=10;
-    //               document.querySelector(".puntos").innerHTML = puntos;
-    //               moneda.position.x = 2100;
-
-    // }
 
   }
-  //   if(validador==1){
-  //   if (chocar(piedra, jugador1)) {
-  //         pregunta();
-  //   }
-  // }else if(validador==2){
-  //   if (chocar(piedra, jugador2)) {
-  //     pregunta();
-  // }
-  // }else{
-  //   if (chocar(piedra, jugador3)) {
-  //     pregunta();
-  // }
-  // }
+
 }
 
 function keysDown(tecla) {
@@ -495,113 +454,47 @@ function keysUp(tecla) {
   keys[tecla.keyCode] = false
 }
 function correr2() {
-  //game.stage.addChild(jugador1);
-  /*for(let cont=0;cont<23;cont++){
-      tet
-       jugador1.texture = loader.resources.[variable].texture;
-   }*/
+ 
   setTimeout(() => {
     jugador1.texture = loader.resources.caminando1.texture;
   }, 50);
-  //   setTimeout(() => {
-  //     jugador1.texture = loader.resources.caminando2.texture;
-  //   }, 200);
+
   setTimeout(() => {
     jugador1.texture = loader.resources.caminando3.texture;
   }, 150);
-  //   setTimeout(() => {
-  //     jugador1.texture = loader.resources.caminando4.texture;
-  //   }, 400);
   setTimeout(() => {
     jugador1.texture = loader.resources.caminando5.texture;
   }, 250);
-  //   setTimeout(() => {
-  //     jugador1.texture = loader.resources.caminando6.texture;
-  //   }, 600);
   setTimeout(() => {
     jugador1.texture = loader.resources.caminando7.texture;
   }, 350);
-  //   setTimeout(() => {
-  //     jugador1.texture = loader.resources.caminando8.texture;
-  //   }, 800);
+
   setTimeout(() => {
     jugador1.texture = loader.resources.caminando9.texture;
   }, 450);
-  //   setTimeout(() => {
-  //     jugador1.texture = loader.resources.caminando10.texture;
-  //   }, 1000);
   setTimeout(() => {
     jugador1.texture = loader.resources.caminando11.texture;
   }, 550);
-  //   setTimeout(() => {
-  //     jugador1.texture = loader.resources.caminando12.texture;
-  //   }, 1200);
+
   setTimeout(() => {
     jugador1.texture = loader.resources.caminando13.texture;
   }, 650);
-  //   setTimeout(() => {
-  //     jugador1.texture = loader.resources.caminando14.texture;
-  //   }, 1400);
   setTimeout(() => {
     jugador1.texture = loader.resources.caminando15.texture;
   }, 750);
-  //   setTimeout(() => {
-  //     jugador1.texture = loader.resources.caminando16.texture;
-  //   }, 1600);
   setTimeout(() => {
     jugador1.texture = loader.resources.caminando17.texture;
   }, 850);
-  //   setTimeout(() => {
-  //     jugador1.texture = loader.resources.caminando18.texture;
-  //   }, 1800);
   setTimeout(() => {
     jugador1.texture = loader.resources.caminando19.texture;
   }, 950);
-  //   setTimeout(() => {
-  //     jugador1.texture = loader.resources.caminando20.texture;
-  //   }, 2000);
   setTimeout(() => {
     jugador1.texture = loader.resources.caminando21.texture;
   }, 1050);
   setTimeout(() => {
     jugador1.texture = loader.resources.caminando22.texture;
   }, 2200);
-  // console.log("llegue1");
-  // for (i2; i2 < 22; i2++){
-  //     console.log("llegue2");
-  //   //juego.stage.removeChild(jugador);
 
-  //   const imgCaminar = `assets/img/imagenes/caminado/caminado_${i2}.png`;
-  //   const juegoCaminando = PIXI.Texture.from(imgCaminar);
-  //   juegoTextureCaminando.push(juegoCaminando);
-
-
-  //     /*let textures = util.filmstrip(juegoTextureCaminando[i2], 320, 320);
-  //     let anySprite = util.sprite(textures);
-  //     game.stage.addChild(anySprite);*/
-
-  //   console.log("llegue");
-  //   jugadorCaminadoIMG = PIXI.AnimatedSprite(juegoTextureCaminando);
-  //   jugadorCaminadoIMG.anchor.set(0.255,0.385);
-  //   jugadorCaminadoIMG.height = 280;
-  //   jugadorCaminadoIMG.width = 230;
-  //   jugadorCaminadoIMG.x = 225;
-  //   jugadorCaminadoIMG.y = 315;
-  //   //console.log("llegue");
-
-
-  //   /*jugadorCaminadoIMG = new PIXI.AnimatedSprite(juegoTextureCaminando);
-  //   jugadorCaminadoIMG.anchor.set(0.5);
-  //   jugadorCaminadoIMG.height = 2;
-  //   jugadorCaminadoIMG.width = 1;
-  //   jugadorCaminadoIMG.x = 0.05;
-  //   jugadorCaminadoIMG.y = 0.05;
-  //   console.log("llegue");*/
-  //   }
-  //   if(!jugadorCaminadoIMG.playing){
-  //       game.stage.addChild(jugadorCaminadoIMG);
-  //       jugadorCaminadoIMG.play();
-  //   }
 
 }
 
@@ -685,32 +578,16 @@ function saltar() {
   }, 650);
   setTimeout(() => {
     //img.x = 500;
-    jugador2.position.y = 200;
+    jugador2.position.y = 90;
     jugador2.vy = 0;
   }, 250);
 
   setTimeout(() => {
     //img.x = 500;
-    jugador2.position.y = 340;
+    jugador2.position.y = 200;
     jugador2.vy = 0;
   }, 650);
-  // for (i1; i1 < 25; i1++){
-  //   game.stage.removeChild(jugador);
-  //    // Imagenes jugador
-  //    const imgSalto = `assets/img/imagenes/Salto/salto_${i1+1}.png`;
-  //    const juegoTextureSalto = PIXI.Texture.from(imgSalto);
-  //    juegoTextureDatosSalto.push(juegoTextureSalto);
-
-  //    jugadorSaltoIMG = new PIXI.AnimatedSprite(juegoTextureDatosSalto);
-  //    jugadorSaltoIMG.height = 280;
-  //    jugadorSaltoIMG.width = 230;
-  //    jugadorSaltoIMG.x = 225;
-  //    jugadorSaltoIMG.y = 160;
-  //  }
-  //  if(!jugadorSaltoIMG.playing){
-  //      game.stage.addChild(jugadorSaltoIMG);
-  //      jugadorSaltoIMG.play();
-  //  }
+ 
 }
 function agachar() {
   setTimeout(() => {
@@ -789,35 +666,15 @@ function agachar() {
     jugador3.texture = loader.resources.abajo25.texture;
   }, 650);
   setTimeout(() => {
-    //img.x = 500;
-    jugador1.position.y = 350;
+    jugador1.position.y = 200;
     jugador1.vy = 0;
   }, 350);
 
   setTimeout(() => {
-    //img.x = 500;
-    jugador1.position.y = 350;
+    jugador1.position.y = 200;
     jugador1.vy = 0;
   }, 450);
-  // for (i; i < 25; i++){
-  //   game.stage.removeChild(jugador);
 
-  //   // Imagenes jugador
-  //   const img = `assets/img/imagenes/agachar/agacharse_${i+1}.png`;
-  //   const juegoTexture = PIXI.Texture.from(img);
-  //   juegoTextureDatos.push(juegoTexture);
-
-  //   jugadorAgachadoIMG = new PIXI.AnimatedSprite(juegoTextureDatos);
-  //   jugadorAgachadoIMG.height = 280;
-  //   jugadorAgachadoIMG.width = 230;
-  //   jugadorAgachadoIMG.x = 225;
-  //   jugadorAgachadoIMG.y = 290;
-
-  //   }
-  //   if(!jugadorAgachadoIMG.playing){
-  //       game.stage.addChild(jugadorAgachadoIMG);
-  //       jugadorAgachadoIMG.play();
-  //   }
 }
 
 function gameLoop2() {
@@ -825,21 +682,19 @@ function gameLoop2() {
 
   v = false;
   keysDiv.innerHTML = JSON.stringify(keys);
-  //game.stage.removeChild(jugador2);
   if (keys["40"] && !keys["38"]) {
     validador = 3;
     game.stage.removeChild(jugador1);
-    jugador1.position.y = 400;
-    // jugador1.position.y = 5000;
+    jugador1.position.y = 250;
     jugador2.position.x = 5000;
     jugador2.position.y = 5000;
     game.stage.addChild(jugador3);
     agachar();
     setTimeout(() => {
       jugador2.position.x = 0;
-      jugador2.position.y = 360;
+      jugador2.position.y = 220;
       jugador1.position.x = 0;
-      jugador1.position.y = 350;
+      jugador1.position.y = 220;
       game.stage.addChild(jugador1);
       game.stage.removeChild(jugador3);
     }, 900);
@@ -854,13 +709,12 @@ function gameLoop2() {
   if (keys["38"] && !keys["40"]) {
     validador = 2;
     game.stage.removeChild(jugador1);
-    jugador1.position.y = 250;
-    // jugador1.position.y = 5000;
+    jugador1.position.y = 100;
     game.stage.addChild(jugador2);
     saltar();
     setTimeout(() => {
       jugador1.position.x = 0;
-      jugador1.position.y = 350;
+      jugador1.position.y = 220;
       game.stage.addChild(jugador1);
       game.stage.removeChild(jugador2);
     }, 900);
@@ -916,14 +770,6 @@ function play(delta) {
     puntoAdicional = 0;
     velocidadEnemigo = velocidaEstandarEnemigo;
   }
-
-
-  // for (let index = 1; index < enemigos.length; index++) {
-  //     if (chocar(enemigos[index], principal)) {
-  //         pregunta();
-  //     }
-  // }
-
   startReloj();
 }
 
