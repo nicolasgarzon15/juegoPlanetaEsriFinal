@@ -293,19 +293,29 @@ let contado6r = 0;
 let bandera1 = 1;
 let url = 'https://geoapps.esri.co//APIRESTGame';
 
+
+
 function cargarPuntuacion(){
-    lvl=1
-    let data = {score: puntos,
-    nivel: lvl};
-    let id_final = getCookie("id_usuario")
-let urladd= url+'/upd-usuario/'+id_final;
-fetch(urladd, {
-        method: 'PUT', 
-        body: JSON.stringify(data), 
-        headers:{'Content-Type': 'application/json'}})
-.then(res => res.json())
-.catch(error => console.error('Error:', error))
-.then(response =>  console.log('Success:', response));
+  let id_final = getCookie("id_usuario")
+  var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({
+  "score": puntos
+});
+
+var requestOptions = {
+  method: 'PUT',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+let urlupd= "https://geoapps.esri.co/APIRESTGame/upd-usuario/"+id_final;
+alert(urlupd);
+fetch(urlupd, requestOptions)
+  .then(response => response.json())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
 }
 
 
@@ -361,13 +371,16 @@ function piedras() {
         portal.classList.add("invisible")
       }, 4000);
 
+      console.log(puntos);
 
       let video = document.querySelector(".video2")
       video.classList.remove("invisible")
       setTimeout(() => {
-        // location.href = 'PLANETA_ESRI_2021/podio.html';
         cargarPuntuacion();
-        location.href = '../podio.html';
+        setTimeout(() => {
+          location.href = 'PLANETA_ESRI_2021/podio1.html';
+        }, 10000);
+
       }, 32000);
       // alert("nivel terminado")
       //podio();

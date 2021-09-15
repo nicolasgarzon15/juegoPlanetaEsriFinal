@@ -11,7 +11,7 @@ let respuestaConnecto = obtenerDatosConnecto(correoConnecto);
 
 
 function obtnerJSON(datos){
-    //  console.log(datos);
+    console.log(datos);
     let dataUsuario = parseJwt(datos);
     //  console.log(dataUsuario);
      registroUsuarioconnecto(dataUsuario);
@@ -33,10 +33,11 @@ function getCookie(c_name) {
 
 function obtenerDatosConnecto(correo) {
     id_usuario = getCookie("id_usuario");
-    if(correo == null &&  id_usuario == ""){
+    if(correo == null &&  id_usuario == "" ){
         location.href = 'inicio.html';
     }
-
+    
+    
     var myHeaders = new Headers();
     myHeaders.append("Client", "esri");
     myHeaders.append("Content-Type", "application/json");
@@ -52,15 +53,20 @@ function obtenerDatosConnecto(correo) {
         body: raw,
         redirect: 'follow'
     };
-
+     try{
     fetch("https://api.connectovirtual.com/asistentes/autenticacion/automatica", requestOptions)
         .then(response => response.text())
         // .then(result => console.log(result))
         .then(result => {obtnerJSON(result);})
-        .catch(error => console.log('error', error));
-      
+        .catch(error => {regreso();});
+     }catch(error){
+            regreso();
+     }
 }
 
+function regreso(){
+    location.href = 'inicio.html';
+}
 function parseJwt (token) {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');

@@ -27,6 +27,18 @@ function abrirJuego() {
 
     }, 42000);
 }
+function abrirJuego2() {
+  var video=document.getElementById("video1");
+  video.style.display = "block";
+  console.log(video);
+  setTimeout(() => {
+      document.getElementById("video1").style.visibility = "hidden";
+      iniciaGame();
+      var nombre = getCookie("nombre");
+      document.querySelector(".nombre").innerHTML = nombre; 
+
+  }, 6000);
+}
 
 function abrirJuego3(){
   var video=document.getElementById("video1");

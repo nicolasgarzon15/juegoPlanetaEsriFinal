@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<script>
+function Entrar(){
+        let correo = document.getElementById("correo").value; 
+
+    var myHeaders = new Headers();
+    myHeaders.append("Client", "esri");
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+        "evento": 2,
+        "email": correo
+    });
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+     try{
+    fetch("https://api.connectovirtual.com/asistentes/autenticacion/automatica", requestOptions)
+        .then(response => response.text())
+        // .then(result => console.log(result))
+        .then(result => {ingresar(correo);})
+        .catch(error => {regreso();});
+     }catch(error){
+            alert("Correo no encontrado.");
+     }
+}
+function regreso(){
+   alert("Correo no encontrado.")
+}
+function ingresar(correo){
+    location.href = 'index.html?correo='+correo;
+}
+
+</script>
 <body>
-    <a href="index.html?correo=ealopez@esri.co">algo</a>
+ 
+    <form>
+    <label>Digite el correo con el cual se registro en la CUE</label><br>
+    <input type="text" name="correo" id="correo"/><br><br>
+    <input type="button" onclick="Entrar()" value="Ingresar"/><br><br>
+     <a href="inicio.html">Registrese</a>
+    </form>
 </body>
-</html>
+</html> 

@@ -34,7 +34,6 @@ let Background, nubes, medio, frente, personaje;
 let prueba = false;
 let keys = {};
 let complejidad = 0.01;
-let piedra;
 let keysDiv = {};
 let Heroe;
 let Fondo;
@@ -48,7 +47,6 @@ let nivel = 0;
 let puntos = 0;
 let puntoAdicional = 0;
 
-let SoundMoneda;
 let SoundFondo;
 let SoundExplosion;
 let jugadorAgachadoIMG;
@@ -63,100 +61,97 @@ let jugador1;
 let jugador2;
 let jugador3;
 
+let resultadosObstaculos;
 
-loader.add("pista", "assets/img/Escenario_3/fondosol.png")
-loader.add("nubes", "assets/img/Escenario_3/nube.png")
-  .add("medio", "assets/img/Escenario_3/medio.png")
-  .add("frente", "assets/img/Escenario_3/Frente.png")
+loader.add("pista", "assets/img/Escenario_2/Escenario2.png")
+loader.add("nubes", "assets/img/Escenario_2/cielo_fondo_.png")
+  .add("medio", "assets/img/Escenario_2/medio.png")
+  .add("frente", "assets/img/Escenario_2/frente.png")
   .add("heroe", "assets/img/heroe.png")
   .add("SoundFondo", "assets/sound/fondo.mp3")
   .add("SoundExplosion", "assets/sound/choque.mp3")
-  .add("SoundMoneda", "assets/sound/moneda.wav")
-  .add("texturapiedra", "assets/img/imagenes/props/obstaculonivel1.png")
-  .add("texturaappstudio", "assets/img/imagenes/props/appstudio.png")
+  .add("texturapiedra", "assets/img/imagenes/props/obstaculo.png")
+  .add("texturaplaneta", "assets/img/imagenes/nivel1/planeta.png")
   .add("texturemoneda", "assets/img/imagenes/nivel1/moneda.png")
   .add("texturepajaro", "assets/img/imagenes/nivel1/pajaro.png")
-loader.add("caminando0", "assets/img/imagenes/nivel3/caminado/Caminado_0.png")
-loader.add("caminando1", "assets/img/imagenes/nivel3/caminado/Caminado_1.png")
-loader.add("caminando2", "assets/img/imagenes/nivel3/caminado/Caminado_2.png")
-loader.add("caminando3", "assets/img/imagenes/nivel3/caminado/Caminado_3.png")
-loader.add("caminando4", "assets/img/imagenes/nivel3/caminado/Caminado_4.png")
-loader.add("caminando5", "assets/img/imagenes/nivel3/caminado/Caminado_5.png")
-loader.add("caminando6", "assets/img/imagenes/nivel3/caminado/Caminado_6.png")
-loader.add("caminando7", "assets/img/imagenes/nivel3/caminado/Caminado_7.png")
-loader.add("caminando8", "assets/img/imagenes/nivel3/caminado/Caminado_8.png")
-loader.add("caminando9", "assets/img/imagenes/nivel3/caminado/Caminado_9.png")
-loader.add("caminando10", "assets/img/imagenes/nivel3/caminado/Caminado_10.png")
-loader.add("caminando11", "assets/img/imagenes/nivel3/caminado/Caminado_11.png")
-loader.add("caminando12", "assets/img/imagenes/nivel3/caminado/Caminado_12.png")
-loader.add("caminando13", "assets/img/imagenes/nivel3/caminado/Caminado_13.png")
-loader.add("caminando14", "assets/img/imagenes/nivel3/caminado/Caminado_14.png")
-loader.add("caminando15", "assets/img/imagenes/nivel3/caminado/Caminado_15.png")
-loader.add("caminando16", "assets/img/imagenes/nivel3/caminado/Caminado_16.png")
-loader.add("caminando17", "assets/img/imagenes/nivel3/caminado/Caminado_17.png")
-loader.add("caminando18", "assets/img/imagenes/nivel3/caminado/Caminado_18.png")
-loader.add("caminando19", "assets/img/imagenes/nivel3/caminado/Caminado_19.png")
-loader.add("caminando20", "assets/img/imagenes/nivel3/caminado/Caminado_20.png")
-loader.add("caminando21", "assets/img/imagenes/nivel3/caminado/Caminado_21.png")
-loader.add("caminando22", "assets/img/imagenes/nivel3/caminado/Caminado_22.png")
-loader.add("caminando23", "assets/img/imagenes/nivel3/caminado/Caminado_23.png")
-loader.add("caminando24", "assets/img/imagenes/nivel3/caminado/Caminado_24.png")
-loader.add("caminando25", "assets/img/imagenes/nivel3/caminado/Caminado_25.png")
+loader.add("caminando0", "assets/img/imagenes/nivel2/caminado/caminado_0.png")
+loader.add("caminando1", "assets/img/imagenes/nivel2/caminado/caminado_1.png")
+loader.add("caminando2", "assets/img/imagenes/nivel2/caminado/caminado_2.png")
+loader.add("caminando3", "assets/img/imagenes/nivel2/caminado/caminado_3.png")
+loader.add("caminando4", "assets/img/imagenes/nivel2/caminado/caminado_4.png")
+loader.add("caminando5", "assets/img/imagenes/nivel2/caminado/caminado_5.png")
+loader.add("caminando6", "assets/img/imagenes/nivel2/caminado/caminado_6.png")
+loader.add("caminando7", "assets/img/imagenes/nivel2/caminado/caminado_7.png")
+loader.add("caminando8", "assets/img/imagenes/nivel2/caminado/caminado_8.png")
+loader.add("caminando9", "assets/img/imagenes/nivel2/caminado/caminado_9.png")
+loader.add("caminando10", "assets/img/imagenes/nivel2/caminado/caminado_10.png")
+loader.add("caminando11", "assets/img/imagenes/nivel2/caminado/caminado_11.png")
+loader.add("caminando12", "assets/img/imagenes/nivel2/caminado/caminado_12.png")
+loader.add("caminando13", "assets/img/imagenes/nivel2/caminado/caminado_13.png")
+loader.add("caminando14", "assets/img/imagenes/nivel2/caminado/caminado_14.png")
+loader.add("caminando15", "assets/img/imagenes/nivel2/caminado/caminado_15.png")
+loader.add("caminando16", "assets/img/imagenes/nivel2/caminado/caminado_16.png")
+loader.add("caminando17", "assets/img/imagenes/nivel2/caminado/caminado_17.png")
+loader.add("caminando18", "assets/img/imagenes/nivel2/caminado/caminado_18.png")
+loader.add("caminando19", "assets/img/imagenes/nivel2/caminado/caminado_19.png")
+loader.add("caminando20", "assets/img/imagenes/nivel2/caminado/caminado_20.png")
+loader.add("caminando21", "assets/img/imagenes/nivel2/caminado/caminado_21.png")
+loader.add("caminando22", "assets/img/imagenes/nivel2/caminado/caminado_22.png")
 
 
-loader.add("salto0", "assets/img/imagenes/nivel3/salto/Salto_0.png")
-loader.add("salto1", "assets/img/imagenes/nivel3/salto/Salto_1.png")
-loader.add("salto2", "assets/img/imagenes/nivel3/salto/Salto_2.png")
-loader.add("salto3", "assets/img/imagenes/nivel3/salto/Salto_3.png")
-loader.add("salto4", "assets/img/imagenes/nivel3/salto/Salto_4.png")
-loader.add("salto5", "assets/img/imagenes/nivel3/salto/Salto_5.png")
-loader.add("salto6", "assets/img/imagenes/nivel3/salto/Salto_6.png")
-loader.add("salto7", "assets/img/imagenes/nivel3/salto/Salto_7.png")
-loader.add("salto8", "assets/img/imagenes/nivel3/salto/Salto_8.png")
-loader.add("salto9", "assets/img/imagenes/nivel3/salto/Salto_9.png")
-loader.add("salto10", "assets/img/imagenes/nivel3/salto/Salto_10.png")
-loader.add("salto11", "assets/img/imagenes/nivel3/salto/Salto_11.png")
-loader.add("salto12", "assets/img/imagenes/nivel3/salto/Salto_12.png")
-loader.add("salto13", "assets/img/imagenes/nivel3/salto/Salto_13.png")
-loader.add("salto14", "assets/img/imagenes/nivel3/salto/Salto_14.png")
-loader.add("salto15", "assets/img/imagenes/nivel3/salto/Salto_15.png")
-loader.add("salto16", "assets/img/imagenes/nivel3/salto/Salto_16.png")
-loader.add("salto17", "assets/img/imagenes/nivel3/salto/Salto_17.png")
-loader.add("salto18", "assets/img/imagenes/nivel3/salto/Salto_18.png")
-loader.add("salto19", "assets/img/imagenes/nivel3/salto/Salto_19.png")
-loader.add("salto20", "assets/img/imagenes/nivel3/salto/Salto_20.png")
-loader.add("salto21", "assets/img/imagenes/nivel3/salto/Salto_21.png")
-loader.add("salto22", "assets/img/imagenes/nivel3/salto/Salto_22.png")
-loader.add("salto23", "assets/img/imagenes/nivel3/salto/Salto_23.png")
-loader.add("salto24", "assets/img/imagenes/nivel3/salto/Salto_24.png")
-loader.add("salto25", "assets/img/imagenes/nivel3/salto/Salto_25.png");
+loader.add("salto0", "assets/img/imagenes/nivel2/salto/salto_0.png")
+loader.add("salto1", "assets/img/imagenes/nivel2/salto/salto_1.png")
+loader.add("salto2", "assets/img/imagenes/nivel2/salto/salto_2.png")
+loader.add("salto3", "assets/img/imagenes/nivel2/salto/salto_3.png")
+loader.add("salto4", "assets/img/imagenes/nivel2/salto/salto_4.png")
+loader.add("salto5", "assets/img/imagenes/nivel2/salto/salto_5.png")
+loader.add("salto6", "assets/img/imagenes/nivel2/salto/salto_6.png")
+loader.add("salto7", "assets/img/imagenes/nivel2/salto/salto_7.png")
+loader.add("salto8", "assets/img/imagenes/nivel2/salto/salto_8.png")
+loader.add("salto9", "assets/img/imagenes/nivel2/salto/salto_9.png")
+loader.add("salto10", "assets/img/imagenes/nivel2/salto/salto_10.png")
+loader.add("salto11", "assets/img/imagenes/nivel2/salto/salto_11.png")
+loader.add("salto12", "assets/img/imagenes/nivel2/salto/salto_12.png")
+loader.add("salto13", "assets/img/imagenes/nivel2/salto/salto_13.png")
+loader.add("salto14", "assets/img/imagenes/nivel2/salto/salto_14.png")
+loader.add("salto15", "assets/img/imagenes/nivel2/salto/salto_15.png")
+loader.add("salto16", "assets/img/imagenes/nivel2/salto/salto_16.png")
+loader.add("salto17", "assets/img/imagenes/nivel2/salto/salto_17.png")
+loader.add("salto18", "assets/img/imagenes/nivel2/salto/salto_18.png")
+loader.add("salto19", "assets/img/imagenes/nivel2/salto/salto_19.png")
+loader.add("salto20", "assets/img/imagenes/nivel2/salto/salto_20.png")
+loader.add("salto21", "assets/img/imagenes/nivel2/salto/salto_21.png")
+loader.add("salto22", "assets/img/imagenes/nivel2/salto/salto_22.png")
+loader.add("salto23", "assets/img/imagenes/nivel2/salto/salto_23.png")
+loader.add("salto24", "assets/img/imagenes/nivel2/salto/salto_24.png")
+loader.add("salto25", "assets/img/imagenes/nivel2/salto/salto_25.png");
 
-loader.add("abajo0", "assets/img/imagenes/nivel3/agachar/Agacharse_0.png");
-loader.add("abajo1", "assets/img/imagenes/nivel3/agachar/Agacharse_1.png");
-loader.add("abajo2", "assets/img/imagenes/nivel3/agachar/Agacharse_2.png");
-loader.add("abajo3", "assets/img/imagenes/nivel3/agachar/Agacharse_3.png");
-loader.add("abajo4", "assets/img/imagenes/nivel3/agachar/Agacharse_4.png");
-loader.add("abajo5", "assets/img/imagenes/nivel3/agachar/Agacharse_5.png");
-loader.add("abajo6", "assets/img/imagenes/nivel3/agachar/Agacharse_6.png");
-loader.add("abajo7", "assets/img/imagenes/nivel3/agachar/Agacharse_7.png");
-loader.add("abajo8", "assets/img/imagenes/nivel3/agachar/Agacharse_8.png");
-loader.add("abajo9", "assets/img/imagenes/nivel3/agachar/Agacharse_9.png");
-loader.add("abajo10", "assets/img/imagenes/nivel3/agachar/Agacharse_10.png");
-loader.add("abajo11", "assets/img/imagenes/nivel3/agachar/Agacharse_11.png");
-loader.add("abajo12", "assets/img/imagenes/nivel3/agachar/Agacharse_12.png");
-loader.add("abajo13", "assets/img/imagenes/nivel3/agachar/Agacharse_13.png");
-loader.add("abajo14", "assets/img/imagenes/nivel3/agachar/Agacharse_14.png");
-loader.add("abajo15", "assets/img/imagenes/nivel3/agachar/Agacharse_15.png");
-loader.add("abajo16", "assets/img/imagenes/nivel3/agachar/Agacharse_16.png");
-loader.add("abajo17", "assets/img/imagenes/nivel3/agachar/Agacharse_17.png");
-loader.add("abajo18", "assets/img/imagenes/nivel3/agachar/Agacharse_18.png");
-loader.add("abajo19", "assets/img/imagenes/nivel3/agachar/Agacharse_19.png");
-loader.add("abajo20", "assets/img/imagenes/nivel3/agachar/Agacharse_20.png");
-loader.add("abajo21", "assets/img/imagenes/nivel3/agachar/Agacharse_21.png");
-loader.add("abajo22", "assets/img/imagenes/nivel3/agachar/Agacharse_22.png");
-loader.add("abajo23", "assets/img/imagenes/nivel3/agachar/Agacharse_23.png");
-loader.add("abajo24", "assets/img/imagenes/nivel3/agachar/Agacharse_24.png");
-loader.add("abajo25", "assets/img/imagenes/nivel3/agachar/Agacharse_25.png");
+loader.add("abajo0", "assets/img/imagenes/nivel2/agachar/agacharse_0.png");
+loader.add("abajo1", "assets/img/imagenes/nivel2/agachar/agacharse_1.png");
+loader.add("abajo2", "assets/img/imagenes/nivel2/agachar/agacharse_2.png");
+loader.add("abajo3", "assets/img/imagenes/nivel2/agachar/agacharse_3.png");
+loader.add("abajo4", "assets/img/imagenes/nivel2/agachar/agacharse_4.png");
+loader.add("abajo5", "assets/img/imagenes/nivel2/agachar/agacharse_0.png");
+loader.add("abajo6", "assets/img/imagenes/nivel2/agachar/agacharse_6.png");
+loader.add("abajo7", "assets/img/imagenes/nivel2/agachar/agacharse_7.png");
+loader.add("abajo8", "assets/img/imagenes/nivel2/agachar/agacharse_8.png");
+loader.add("abajo9", "assets/img/imagenes/nivel2/agachar/agacharse_9.png");
+loader.add("abajo10", "assets/img/imagenes/nivel2/agachar/agacharse_10.png");
+loader.add("abajo11", "assets/img/imagenes/nivel2/agachar/agacharse_11.png");
+loader.add("abajo12", "assets/img/imagenes/nivel2/agachar/agacharse_12.png");
+loader.add("abajo13", "assets/img/imagenes/nivel2/agachar/agacharse_13.png");
+loader.add("abajo14", "assets/img/imagenes/nivel2/agachar/agacharse_14.png");
+loader.add("abajo15", "assets/img/imagenes/nivel2/agachar/agacharse_15.png");
+loader.add("abajo16", "assets/img/imagenes/nivel2/agachar/agacharse_16.png");
+loader.add("abajo17", "assets/img/imagenes/nivel2/agachar/agacharse_17.png");
+loader.add("abajo18", "assets/img/imagenes/nivel2/agachar/agacharse_18.png");
+loader.add("abajo19", "assets/img/imagenes/nivel2/agachar/agacharse_19.png");
+loader.add("abajo20", "assets/img/imagenes/nivel2/agachar/agacharse_20.png");
+loader.add("abajo21", "assets/img/imagenes/nivel2/agachar/agacharse_21.png");
+loader.add("abajo22", "assets/img/imagenes/nivel2/agachar/agacharse_22.png");
+loader.add("abajo23", "assets/img/imagenes/nivel2/agachar/agacharse_23.png");
+loader.add("abajo24", "assets/img/imagenes/nivel2/agachar/agacharse_24.png");
+loader.add("abajo25", "assets/img/imagenes/nivel2/agachar/agacharse_25.png");
 
 loader.load();
 loader.onError.add((e, d) => {
@@ -171,7 +166,6 @@ loader.onComplete.add((loader, resources) => {
   Heroe = resources["heroe"].texture;
   SoundExplosion = resources["SoundExplosion"].sound;
   SoundFondo = resources["SoundFondo"].sound;
-  SoundMoneda = resources["SoundMoneda"].sound;
   console.log('Imagenes cargadas completamente')
 })
 
@@ -221,18 +215,19 @@ function setup(delta) {
       let texture2 = loader.resources.salto0.texture;
       jugador2 = new PIXI.Sprite(texture2)
       jugador2.position.x = 0;
-      jugador2.position.y = 360;
+      jugador2.position.y = 350;
       jugador2.height = 200;
       jugador2.width = 200;
 
       let texture3 = loader.resources.abajo0.texture;
       jugador3 = new PIXI.Sprite(texture3)
       jugador3.position.x = 0;
-      jugador3.position.y = 360;
+      jugador3.position.y = 350;
       jugador3.height = 200;
       jugador3.width = 200;
       game.stage.addChild(jugador1);
-      // Imagen Piedra
+
+      // Imagen obstaculo
       let texturepiedra = loader.resources.texturapiedra.texture;
       piedra = new PIXI.Sprite(texturepiedra)
       piedra.position.x = 1410;
@@ -290,13 +285,14 @@ function setup(delta) {
 
     }
 }
-
+let lvl;
 let contado6r = 0;
 let bandera1 = 1;
 let url = 'https://geoapps.esri.co//APIRESTGame';
 function cargarPuntuacion(){
-   
-    let data = {score: puntos};
+    lvl=1
+    let data = {score: puntos,
+    nivel: lvl};
     let id_final = getCookie("id_usuario")
 let urladd= url+'/upd-usuario/'+id_final;
 fetch(urladd, {
@@ -307,6 +303,8 @@ fetch(urladd, {
 .catch(error => console.error('Error:', error))
 .then(response =>  console.log('Success:', response));
 }
+
+
 function getCookie(nombre) {
   var nom = nombre + "=";
   var array = document.cookie.split(";");
@@ -321,6 +319,7 @@ function getCookie(nombre) {
   }
   return "";
 }
+
 function piedras() {
 
   //
@@ -331,47 +330,63 @@ function piedras() {
   if (contado6r == "10" || contado6r == "20" || contado6r == "30" || contado6r == "40" || contado6r == "50" || contado6r == "60") {
     
   // SoundFondo.stop();
-  SoundExplosion.play();
-    preguntacharlas();
+  // SoundMoneda.play();
+    //preguntacharlas();
+    piedra.texture = loader.resources.texturaplaneta.texture;
+    piedra.position.x = 1310;
+    piedra.position.y = 350;
+    //piedra.height = 100;
+    //piedra.width = 100;
+    // complejidad += 0.25;
+    contado6r++;
+    console.log(contado6r);
+    bandera1 = 4;
   } else if (contado6r == "61") {
     contado6r++;
     puntos += 100;
     document.querySelector(".puntos").innerHTML = puntos;
-    setTimeout(() => {
       let canvas = document.querySelector(".container")
-      canvas.classList.add("invisible")
+      
+      canvas.classList.add("invisible");
 
       game.stop();
-  // SoundFondo.stop();
 
+      canvas.classList.add("invisible")
+      game.stop();
       let video = document.querySelector(".video2")
       video.classList.remove("invisible")
+
       setTimeout(() => {
-
-        location.href = 'PLANETA_ESRI_2021/podio.html';
+       location.href = 'PLANETA_ESRI_2021/podio2.html';
         cargarPuntuacion();
-      }, 32000);
-      // alert("nivel terminado")
-      //podio();
+      }, 20000);
+      // SoundFondo.stop();
 
-    }, 2000);
 
   } else {
     if (chocar(piedra, jugador1)) {
       if (bandera1 == 1) {
         // SoundFondo.stop();
-        SoundExplosion.play();
+        // SoundExplosion.play();
         pregunta();
       }
       else if (bandera1 == 2) {
         puntos += randomInt(8, 15);
         document.querySelector(".puntos").innerHTML = puntos;
         piedra.position.x = -9;
-        SoundMoneda.play();
+        
+  // SoundMoneda.play();
       } else {
         puntos -= 16;
         document.querySelector(".puntos").innerHTML = puntos;
         piedra.position.x = -9;
+        // SoundExplosion.play();
+      } if (bandera1 == 4) {
+        preguntacharlas();
+
+        piedra.position.x = -9;
+        
+  // SoundMoneda.play();
       }
 
     }
@@ -390,64 +405,24 @@ function piedras() {
         bandera1 = 1;
       } else if (aleatorio == 3) {
         piedra.position.x = 1310;
-        piedra.position.y = 440;
+        piedra.position.y = 450;
         piedra.texture = loader.resources.texturemoneda.texture;
         // complejidad += 0.25;
         contado6r++;
         bandera1 = 2;
       } else {
         piedra.position.x = 1310;
-        piedra.position.y = 270;
+        piedra.position.y = 255;
         piedra.texture = loader.resources.texturepajaro.texture;
         // complejidad += 0.25;
         contado6r++;
         bandera1 = 3;
       }
-      // complejidad+=0.25;
     }
-    // if(moneda.position.x <10){
 
-    //   moneda.position.x = 2100;
-    //   // complejidad+=0.25;
-    // }
-    // if(pajaro.position.x <5){
-
-    //   pajaro.position.x = 1510;
-    //   // complejidad+=0.25;
-    // }
-
-    // if (chocar(piedra, jugador1)) {
-    //         pregunta();
-    // }
-    //   if (chocar(pajaro, jugador1) || chocar(pajaro, jugador2)) {
-    //     //alert("choco")
-    //      puntos-=5;
-    //      document.querySelector(".puntos").innerHTML = puntos;
-    //      pajaro.position.x = 1510;
-    //     //puntos-=5;
-    // }
-    //   if (chocar(moneda, jugador1)) {
-    //               //Sumar puntos
-    //               puntos+=10;
-    //               document.querySelector(".puntos").innerHTML = puntos;
-    //               moneda.position.x = 2100;
-
-    // }
 
   }
-  //   if(validador==1){
-  //   if (chocar(piedra, jugador1)) {
-  //         pregunta();
-  //   }
-  // }else if(validador==2){
-  //   if (chocar(piedra, jugador2)) {
-  //     pregunta();
-  // }
-  // }else{
-  //   if (chocar(piedra, jugador3)) {
-  //     pregunta();
-  // }
-  // }
+
 }
 function keysDown(tecla) {
   keys[tecla.keyCode] = true
@@ -656,23 +631,7 @@ function saltar() {
     jugador2.position.y = 340;
     jugador2.vy = 0;
   }, 650);
-  // for (i1; i1 < 25; i1++){
-  //   game.stage.removeChild(jugador);
-  //    // Imagenes jugador
-  //    const imgSalto = `assets/img/imagenes/Salto/salto_${i1+1}.png`;
-  //    const juegoTextureSalto = PIXI.Texture.from(imgSalto);
-  //    juegoTextureDatosSalto.push(juegoTextureSalto);
-
-  //    jugadorSaltoIMG = new PIXI.AnimatedSprite(juegoTextureDatosSalto);
-  //    jugadorSaltoIMG.height = 280;
-  //    jugadorSaltoIMG.width = 230;
-  //    jugadorSaltoIMG.x = 225;
-  //    jugadorSaltoIMG.y = 160;
-  //  }
-  //  if(!jugadorSaltoIMG.playing){
-  //      game.stage.addChild(jugadorSaltoIMG);
-  //      jugadorSaltoIMG.play();
-  //  }
+  
 }
 function agachar() {
   setTimeout(() => {
@@ -791,15 +750,15 @@ function gameLoop2() {
   if (keys["40"] && !keys["38"]) {
     validador = 3;
     game.stage.removeChild(jugador1);
-    jugador1.position.x = 5000;
-    jugador1.position.y = 5000;
+    jugador1.position.y = 400;
+    // jugador1.position.y = 5000;
     jugador2.position.x = 5000;
     jugador2.position.y = 5000;
     game.stage.addChild(jugador3);
     agachar();
     setTimeout(() => {
       jugador2.position.x = 0;
-      jugador2.position.y = 360;
+      jugador2.position.y = 350;
       jugador1.position.x = 0;
       jugador1.position.y = 350;
       game.stage.addChild(jugador1);
@@ -816,8 +775,8 @@ function gameLoop2() {
   if (keys["38"] && !keys["40"]) {
     validador = 2;
     game.stage.removeChild(jugador1);
-    jugador1.position.x = 5000;
-    jugador1.position.y = 5000;
+    jugador1.position.y = 250;
+    // jugador1.position.y = 5000;
     game.stage.addChild(jugador2);
     saltar();
     setTimeout(() => {
@@ -847,6 +806,7 @@ function gameLoop(delta) {
     if (enemigos[index].y > heightWindow && !enemigos[index].paso) {
       enemigos[index].paso = true;
       totalPasaHeroe++;
+
       puntos += 3;
       document.querySelector(".puntos").innerHTML = puntos;
       if (totalPasaHeroe == 5) {
@@ -907,7 +867,7 @@ function iniciaGame() {
 function preguntacharlas() {
   let nombre_puntos_cookie = "puntaje"; 
   document.cookie = `${nombre_puntos_cookie}=${puntos}`;
-  let divPreguntas = document.querySelector('.seccion-preguntas3');
+  let divPreguntas = document.querySelector('.seccion-preguntas');
   divPreguntas.classList.remove('invisible');
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.add('invisible');
@@ -927,7 +887,7 @@ function preguntacharlas() {
 }
 function pregunta() {
   let nombre_puntos_cookie = "puntaje"; document.cookie = `${nombre_puntos_cookie}=${puntos}`;
-  let divPreguntas = document.querySelector('.seccion-preguntas3');
+  let divPreguntas = document.querySelector('.seccion-preguntas');
   divPreguntas.classList.remove('invisible');
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.add('invisible');
@@ -1519,6 +1479,11 @@ function evaluarPregunta(opcion) {
   contador.classList.add('invisible')
   if (opcion != null) {
     if (posibles_respuestas[opcion] === respuestaCorrecta) {
+      puntosGanados(8);
+      setTimeout(()=>{
+        let puntosSumados = document.querySelector('.ganoPuntos');
+        puntosSumados.classList.add('invisible');
+      }, 3000)
       swal("Respuesta Correcta , Ganaste 8 puntos", {
         icon: "success",
         button: false,
@@ -1526,16 +1491,21 @@ function evaluarPregunta(opcion) {
       });
       // alert('Respuesta Correcta , Ganaste 8 puntos');
       puntos += 8;
-      piedra.position.x = 1310;
+    piedra.position.x = 1310;
       contado6r++;
       console.log(contado6r);
       setTimeout(() => {
         
-        SoundExplosion.stop(); 
+        // SoundExplosion.stop(); 
             continuarGame();
             // SoundFondo.play();
             }, 2000);
     } else if (opcion == 5) {
+      puntosPerdidos(5);
+      setTimeout(()=>{
+        let puntosRestados = document.querySelector('.perdioPuntos');
+        puntosRestados.classList.add('invisible');
+      }, 3000);
       swal("No respondiste a tiempo , pierdes 5 puntos", {
         icon: "error",
         button: false,
@@ -1543,15 +1513,20 @@ function evaluarPregunta(opcion) {
       });
       //  alert('No respondiste a tiempo , pierdes 5 puntos');
       puntos -= 5;
-      piedra.position.x = 1310;
+      pajaro.position.x = 1310;
       setTimeout(() => {
-        SoundExplosion.stop(); 
+        // SoundExplosion.stop(); 
             continuarGame();
             // SoundFondo.play();
       }, 2000);
 
     }
     else {
+      puntosPerdidos(5);
+      setTimeout(()=>{
+        let puntosRestados = document.querySelector('.perdioPuntos');
+        puntosRestados.classList.add('invisible');
+      }, 3000);
       swal("Respuesta incorrecta , perdiste 5 puntos", {
         icon: "error",
         button: false,
@@ -1566,13 +1541,13 @@ function evaluarPregunta(opcion) {
       contado6r++;
       console.log(contado6r);
       setTimeout(() => {
-        SoundExplosion.stop(); 
+        // SoundExplosion.stop(); 
             continuarGame();
             // SoundFondo.play();
       }, 2000);
     }
   }
-  let divPreguntas = document.querySelector('.seccion-preguntas3');
+  let divPreguntas = document.querySelector('.seccion-preguntas');
   divPreguntas.classList.add('invisible');
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.remove('invisible');
@@ -1664,5 +1639,40 @@ function getCookie(c_name) {
     } 
   } 
   return ""; 
-} 
-  
+}
+
+// function puntosStatic(puntos){
+//   let puntosSumados = document.querySelector('.ganoPuntos');
+//   puntosSumados.classList.add('invisible');
+//   let puntosRestados = document.querySelector('.perdioPuntos');
+//   puntosRestados.classList.add('invisible');
+//   let puntosEstandar = document.querySelector('puntos');
+//   puntosEstandar.classList.remove('invisible');
+//   document.querySelector(".puntos").innerHTML = puntos;
+// }
+
+function puntosGanados(puntosGanadosEnvio){
+  let puntosSumados = document.querySelector('.ganoPuntos');
+  puntosSumados.classList.remove('invisible');
+  // let puntosEstandar = document.querySelector('puntos');
+  // puntosEstandar.classList.add('invisible');
+  document.querySelector(".ganoPuntos").innerHTML = `+${puntosGanadosEnvio}`;
+}
+
+function puntosPerdidos(puntosPerdidosEnvio){
+  let puntosRestados = document.querySelector('.perdioPuntos');
+  puntosRestados.classList.remove('invisible');
+  // let puntosSumados = document.querySelector('.ganoPuntos');
+  // puntosSumados.classList.add('invisible');
+  // let puntosEstandar = document.querySelector('puntos');
+  // puntosEstandar.classList.add('invisible');
+  document.querySelector(".perdioPuntos").innerHTML = -puntosPerdidosEnvio;
+}
+
+function puntosGanados2(puntosGanadosEnvio2){
+  let puntosSumados = document.querySelector('.ganoPuntos2');
+  puntosSumados.classList.remove('invisible');
+  // let puntosEstandar = document.querySelector('puntos');
+  // puntosEstandar.classList.add('invisible');
+  document.querySelector(".ganoPuntos2").innerHTML = `+${puntosGanadosEnvio2}`;
+}

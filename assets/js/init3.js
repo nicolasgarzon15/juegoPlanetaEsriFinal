@@ -368,7 +368,7 @@ function piedras() {
         video.classList.remove("invisible")
 
         setTimeout(() => {
-         location.href = 'PLANETA_ESRI_2021/podio.html';
+         location.href = 'PLANETA_ESRI_2021/podio3.html';
           cargarPuntuacion();
         }, 12000);
 
