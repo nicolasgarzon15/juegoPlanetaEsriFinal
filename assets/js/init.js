@@ -364,9 +364,9 @@ function piedras() {
       let video = document.querySelector(".video2")
       video.classList.remove("invisible")
       setTimeout(() => {
-
-        location.href = 'PLANETA_ESRI_2021/juego3.html';
+        // location.href = 'PLANETA_ESRI_2021/podio.html';
         cargarPuntuacion();
+        location.href = '../podio.html';
       }, 32000);
       // alert("nivel terminado")
       //podio();

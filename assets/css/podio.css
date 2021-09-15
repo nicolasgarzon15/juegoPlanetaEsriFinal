@@ -1,48 +1,127 @@
+@font-face{
+    font-family: AvenirNextLTPro-Demi;
+    src: url("../fonts/AvenirNextLTPro-Demi.ttf");
+}
 body{
+    font-family: AvenirNextLTPro-Demi;
     height: 100%;
     width:100%;
     padding: 0;
     margin: 0;
-    /* background: url(../img/Escenario.png);
-    background-position: center center;
-    background-size: cover; */
+    overflow-x:hidden;
+    overflow-y:hidden;
 }
 .container{
     background: url(../img/podio/Escenario.png);
     background-position: center center;
     background-size: cover;
-    height: 99.5vh;
-    width: 100vw;
+    height: 99vh;
+    width: 100%;
     display: grid;
     grid-template-columns: 20% 60% 20%;
-    grid-template-rows:20% 60% 20% ;
+    grid-template-rows:20% 20% 40% 20% ;
 }
 .transparente{
 grid-column:   1/4;
-grid-row: 1/4;
+grid-row: 1/5;
 opacity: 0.7;
 background-color: black;
 }
+.contenedor{
+margin-top: 30vh;
+grid-column: 2;
+grid-row: 2;
+}
 .img_cactus{
 grid-column: 2;
-grid-row: 2/3;
+grid-row: 3/4;
 margin:0;
 padding:0;
 z-index: 40;
+display:flex;
+justify-content: center;
+align-items: center;
 }
 .div_podio{
     grid-column: 2;
     grid-row: 1;
-    display: flex;
+
     justify-content: center;
     align-items: center;
     z-index: 50;
 }
-.div_podio h1{
+.div_podio div h1{
     color: #fff;
     text-align: center;
-    font-family: Lato;
     font-weight: 300;
-    font-size: 60pt;
+    font-size: 60px;
     letter-spacing: 7px;
 }
+.div_podio h3{
+    margin-top: 20vh;
+    color: #fff;
+    text-align: center;
+    font-weight: 300;
+    font-size: 35px;
+    letter-spacing: 7px;
+}
+.podio{
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    z-index: 50;  
+    color: white;
+    font-size: 30px;
+}
+.segundo,.tercero{
+    padding-top: 30vh;
+}
+
+/* podio 2 */
+.container2{
+    background: url(../img/podio/Escenario2.png);
+    background-position: center center;
+    background-size: cover;
+    height: 99vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows:20% 20% 40% 20% ;
+}
+
+.img_carros{
+    grid-column: 2;
+    grid-row: 3;
+    margin:0;
+    padding:0;
+    z-index: 40;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    /* podio 3*/
+    .container3{
+        background: url(../img/podio/Escenario\ completo.png);
+        background-position: center center;
+        background-size: cover;
+        height: 99vh;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 20% 60% 20%;
+        grid-template-rows:20% 20% 40% 20% ;
+    }
+    
+    .img_arboles{
+        grid-column: 2;
+        grid-row: 3;
+        margin:0;
+        padding:0;
+        z-index: 80;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        } 
+
