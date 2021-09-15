@@ -401,3 +401,10 @@ video{
     background-size: cover;    
     height: 93vh;
  }
+
+ .imagen-reto3 {
+    background: url(../img/reto/reto_3.png);
+    background-position: center center;
+    background-size: cover;    
+    height: 93vh;
+ }

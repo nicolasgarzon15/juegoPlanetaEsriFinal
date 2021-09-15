@@ -1,4 +1,3 @@
-
 function abrirMenu() {
     location.href = 'index.html';
 }
@@ -9,10 +8,6 @@ function modalCerrar() {
         location.href = 'inicio.html';
     }, 1000);
 }
-
-// function salirInicio() {
-//     location.href = 'inicio.html';
-// }
 
 function abrirJuego() {
     var video=document.getElementById("video1");
@@ -31,6 +26,24 @@ function abrirJuego() {
         document.querySelector(".nombre").innerHTML = nombre; 
 
     }, 42000);
+}
+
+function abrirJuego3(){
+  var video=document.getElementById("video1");
+  video.style.display = "block";
+  console.log(video);
+  setTimeout(() => {
+      document.getElementById("video1").style.visibility = "hidden";
+      var imgReto=document.querySelector(".imagen-reto3");
+      console.log(imgReto);
+      imgReto.classList.remove("invisible");
+      setTimeout(() => {
+        imgReto.classList.add("invisible");
+        iniciaGame();
+      }, 3000);
+      var nombre = getCookie("nombre");
+      document.querySelector(".nombre").innerHTML = nombre; 
+  }, 5000);
 }
 
 function podio() {

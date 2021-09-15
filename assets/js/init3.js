@@ -73,9 +73,10 @@ loader.add("nubes", "assets/img/Escenario_3/nube.png")
   .add("SoundExplosion", "assets/sound/choque.mp3")
   .add("SoundMoneda", "assets/sound/moneda.wav")
   .add("texturapiedra", "assets/img/imagenes/props/obstaculonivel1.png")
-  .add("texturaappstudio", "assets/img/imagenes/props/appstudio.png")
+  .add("texturaplaneta", "assets/img/imagenes/nivel1/planeta.png")
   .add("texturemoneda", "assets/img/imagenes/nivel1/moneda.png")
   .add("texturepajaro", "assets/img/imagenes/nivel1/pajaro.png")
+
 loader.add("caminando0", "assets/img/imagenes/nivel3/caminado/Caminado_0.png")
 loader.add("caminando1", "assets/img/imagenes/nivel3/caminado/Caminado_1.png")
 loader.add("caminando2", "assets/img/imagenes/nivel3/caminado/Caminado_2.png")
@@ -324,6 +325,7 @@ function getCookie(nombre) {
   }
   return "";
 }
+
 function piedras() {
 
   //
@@ -348,32 +350,40 @@ function piedras() {
     contado6r++;
     puntos += 100;
     document.querySelector(".puntos").innerHTML = puntos;
-    setTimeout(() => {
       let canvas = document.querySelector(".container")
-      let portal = document.querySelector(".video3")
+      
       canvas.classList.add("invisible")
 
       game.stop();
       // SoundFondo.stop();
 
-      portal.classList.remove("invisible");
+      if(puntos>300){
+        let canvas = document.querySelector(".container")
 
-      setTimeout(() => {
-        portal.classList.add("invisible")
-      }, 4000);
+        canvas.classList.add("invisible")
+        game.stop();
+        let video = document.querySelector(".video2")
+        video.classList.remove("invisible")
 
+        setTimeout(() => {
+         location.href = 'PLANETA_ESRI_2021/podio.html';
+          cargarPuntuacion();
+        }, 12000);
 
-      let video = document.querySelector(".video2")
-      video.classList.remove("invisible")
-      setTimeout(() => {
+    }else{
 
-        location.href = 'PLANETA_ESRI_2021/juego3.html';
-        cargarPuntuacion();
-      }, 32000);
-      // alert("nivel terminado")
-      //podio();
+        let canvas = document.querySelector(".container")
+        canvas.classList.add("invisible")
+        game.stop();
+        let video = document.querySelector(".video3")
 
-    }, 2000);
+        video.classList.remove("invisible")
+        setTimeout(() => {
+          location.href = 'PLANETA_ESRI_2021/podio.html';
+
+          cargarPuntuacion();
+        }, 12000);
+    }
 
   } else {
     if (chocar(piedra, jugador1)) {
@@ -476,6 +486,7 @@ function piedras() {
   // }
   // }
 }
+
 function keysDown(tecla) {
   keys[tecla.keyCode] = true
 }
@@ -933,7 +944,7 @@ function iniciaGame() {
 function preguntacharlas() {
   let nombre_puntos_cookie = "puntaje"; 
   document.cookie = `${nombre_puntos_cookie}=${puntos}`;
-  let divPreguntas = document.querySelector('.seccion-preguntas');
+  let divPreguntas = document.querySelector('.seccion-preguntas3');
   divPreguntas.classList.remove('invisible');
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.add('invisible');
@@ -953,7 +964,7 @@ function preguntacharlas() {
 }
 function pregunta() {
   let nombre_puntos_cookie = "puntaje"; document.cookie = `${nombre_puntos_cookie}=${puntos}`;
-  let divPreguntas = document.querySelector('.seccion-preguntas');
+  let divPreguntas = document.querySelector('.seccion-preguntas3');
   divPreguntas.classList.remove('invisible');
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.add('invisible');
@@ -1550,7 +1561,7 @@ function evaluarPregunta(opcion) {
         button: false,
         timer: 2000,
       });
-      // alert('Respuesta Correcta , Ganaste 8 puntos');
+      // alert('Respuesta correcta, ganaste 8 puntos');
       puntos += 8;
       piedra.position.x = 1310;
       contado6r++;
@@ -1562,12 +1573,12 @@ function evaluarPregunta(opcion) {
             // SoundFondo.play();
             }, 2000);
     } else if (opcion == 5) {
-      swal("No respondiste a tiempo , pierdes 5 puntos", {
+      swal("No respondiste a tiempo, pierdes 5 puntos", {
         icon: "error",
         button: false,
         timer: 2000,
       });
-      //  alert('No respondiste a tiempo , pierdes 5 puntos');
+      //  alert('No respondiste a tiempo, pierdes 5 puntos');
       puntos -= 5;
       piedra.position.x = 1310;
       setTimeout(() => {
@@ -1583,7 +1594,7 @@ function evaluarPregunta(opcion) {
         button: false,
         timer: 2000,
       });
-      // alert('Respuesta incorrecta , perdiste 5 puntos');
+      // alert('Respuesta incorrecta, perdiste 5 puntos');
       puntos -= 5;
       if (puntos < 0) {
         puntos = 0;
@@ -1598,7 +1609,7 @@ function evaluarPregunta(opcion) {
       }, 2000);
     }
   }
-  let divPreguntas = document.querySelector('.seccion-preguntas');
+  let divPreguntas = document.querySelector('.seccion-preguntas3');
   divPreguntas.classList.add('invisible');
   let divPausa = document.querySelector('.pausa');
   divPausa.classList.remove('invisible');
