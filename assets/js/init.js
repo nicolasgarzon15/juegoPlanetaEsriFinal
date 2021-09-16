@@ -311,7 +311,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 let urlupd= "https://geoapps.esri.co/APIRESTGame/upd-usuario/"+id_final;
-alert(urlupd);
+
 fetch(urlupd, requestOptions)
   .then(response => response.json())
   .then(result => console.log(result))
